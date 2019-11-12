@@ -101,7 +101,7 @@ img#login{
 	display:inline-block;
 	padding:0 5%;
 }
-#login ul li#account{
+#login ul li.account{
 	position:relative;
 }
 #login li a{
