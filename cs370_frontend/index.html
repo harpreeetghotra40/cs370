@@ -1,43 +1,95 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Home</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Home</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/bookFlightWidget.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body>
-<header>
-    <div id="login">
-        <ul class="mainMenu">
-            <li id="account">
-                Account 
-                <ul class="subMenu">
-                    <li><a href="login.html">Sign In/Log Out</a></li>
-                    <li><a href="register.html">Create an account</a></li>
-                </ul>
-            </li>
-            <li onclick="logout()">Logout</li>
-            <!--<li><a href="login.html"><img id="login" src="images/user.png" /></a></li>-->
-        </ul>
+    <header>
+        <div id="login">
+            <ul class="mainMenu">
+                <li id="account">
+                    Account
+                    <ul class="subMenu">
+                        <li><a href="login.html">Sign In/Log Out</a></li>
+                        <li><a href="register.html">Create an account</a></li>
+                    </ul>
+                </li>
+                <li onclick="logout()">Logout</li>
+                <!--<li><a href="login.html"><img id="login" src="images/user.png" /></a></li>-->
+            </ul>
+        </div>
+        <h1 id="hpj">HPJ Flight Booking System</h1>
+        <div id="logo">
+            <a href="index.html"><img src="images/flight.png" /></a>
+        </div>
+    </header>
+
+    <!-- widget starts here -->
+    <div class="book-flight-widget">
+
+        <!-- tab widget starts here -->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'London')">Round Trip</button>
+            <button class="tablinks" onclick="openCity(event, 'Paris')">One way</button>
+        </div>
+
+        <div id="London" class="tabcontent">
+            <div>
+                <form>
+                    <input list="destinations" name="destination">
+                    <datalist id="destinations">
+                        <option value="New York">
+                        <option value="London">
+                        <option value="Taiwan">
+                        <option value="New Delhi">
+                        <option value= "Chicago">
+                    </datalist>
+                    <br>
+                    <input type="submit" value = "Search" style = "padding: 10px; background-color: yellow; font-weight: bold; border: none; margin-top: 10px;">
+                </form>
+            </div>
+        </div>
+
+        <div id="Paris" class="tabcontent">
+            <h3>One way</h3>
+            <p>Paris is the capital of France.</p>
+        </div>
+        <!-- tab widget ends here -->
     </div>
-    <h1 id="hpj">HPJ Flight Booking System</h1>
-    <div id="logo">
-        <a href="index.html"><img src="images/flight.png" /></a>
-    </div>
-</header>
-<main>
-	    	
-</main>
-<footer>
-	<div class="copyright"> </div>
-</footer>
+
+
+    <!-- page ends here -->
+    <footer>
+        <div class="copyright"> </div>
+    </footer>
 </body>
 
-    <script>
-        function logout(){
-            console.log("halll");
-            loaclStorage.clear();
-            window.location.href = "login.html";
+<script>
+    function logout() {
+        console.log("halll");
+        loaclStorage.clear();
+        window.location.href = "login.html";
+    }
+
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
         }
-    </script>
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
 </html>
