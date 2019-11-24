@@ -61,12 +61,12 @@
                     </datalist>
 
                     <br>
-                    <input type="datetime-local" name="flyingFromDate">
-                    <input type="datetime-local" name="flyingToDate">
+                    <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
+                    <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
                     <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
                     <input id = "passenger" type="number">
                     <br>
-                    <input type="submit" value = "Search" style = "padding: 10px; background-color: yellow; font-weight: bold; border: none; margin-top: 10px;">
+                    <input type="submit" value = "Search" style = "padding: 10px; background-color:#c9beae; font-weight: bold; border: none; margin-top: 10px;">
                 </form>
             </div>
         </div>
@@ -84,12 +84,12 @@
                         </datalist>
 
                         <br>
-                        <input type="datetime-local" name="flyingFromDate">
-                        <input type="datetime-local" name="flyingToDate">
+                        <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
+                        <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
                         <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
                         <input id = "passenger" type="number">
                         <br>
-                        <input type="submit" value = "Search" style = "padding: 10px; background-color: yellow; font-weight: bold; border: none; margin-top: 10px;">
+                        <input type="submit" value = "Search"> 
                     </form>
                 </div>
             </div>
@@ -107,6 +107,11 @@
     function makeReservation(event){
         event.preventDefault();
         console.log("what");
+    }
+
+    function clickArrow(event){
+        console.log(event.target);
+        event.target.click();
     }
 
     function logout() {
