@@ -35,31 +35,64 @@
 
         <!-- tab widget starts here -->
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'London')">Round Trip</button>
-            <button class="tablinks" onclick="openCity(event, 'Paris')">One way</button>
+            <button class="tablinks" onclick="openCity(event, 'Round_Trip')">Round Trip</button>
+            <button class="tablinks" onclick="openCity(event, 'One_Way')">One way</button>
         </div>
 
-        <div id="London" class="tabcontent">
+        <div id="Round_Trip" class="tabcontent">
             <div>
                 <form>
-                    <input list="destinations" name="destination">
+                    <input class="flyCityA" list="source" name="destination" placeholder="Flying from">
+                    <datalist id="source">
+                        <option value="New York">
+                        <option value="London">
+                        <option value="Taiwan">
+                        <option value="New Delhi">
+                        <option value="Chicago">
+                    </datalist>
+
+                    <input class="flyCityB" list="destinations" name="destination" placeholder="Flying to">
                     <datalist id="destinations">
                         <option value="New York">
                         <option value="London">
                         <option value="Taiwan">
                         <option value="New Delhi">
-                        <option value= "Chicago">
+                        <option value="Chicago">
                     </datalist>
+
+                    <br>
+                    <input type="datetime-local" name="flyingFromDate">
+                    <input type="datetime-local" name="flyingToDate">
+                    <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
+                    <input id = "passenger" type="number">
                     <br>
                     <input type="submit" value = "Search" style = "padding: 10px; background-color: yellow; font-weight: bold; border: none; margin-top: 10px;">
                 </form>
             </div>
         </div>
 
-        <div id="Paris" class="tabcontent">
-            <h3>One way</h3>
-            <p>Paris is the capital of France.</p>
-        </div>
+        <div id="One_Way" class="tabcontent">
+                <div>
+                    <form id = "makeReservation" onsubmit = "makeReservation(event)">
+                        <input class="flyCityA" list="source" name="destination" placeholder="Flying from">
+                        <datalist id="source">
+                            <option value="New York">
+                            <option value="London">
+                            <option value="Taiwan">
+                            <option value="New Delhi">
+                            <option value="Chicago">
+                        </datalist>
+
+                        <br>
+                        <input type="datetime-local" name="flyingFromDate">
+                        <input type="datetime-local" name="flyingToDate">
+                        <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
+                        <input id = "passenger" type="number">
+                        <br>
+                        <input type="submit" value = "Search" style = "padding: 10px; background-color: yellow; font-weight: bold; border: none; margin-top: 10px;">
+                    </form>
+                </div>
+            </div>
         <!-- tab widget ends here -->
     </div>
 
@@ -71,6 +104,11 @@
 </body>
 
 <script>
+    function makeReservation(event){
+        event.preventDefault();
+        console.log("what");
+    }
+
     function logout() {
         console.log("halll");
         loaclStorage.clear();
@@ -80,6 +118,7 @@
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");
+        tabcontent[0].style.display = "block";
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
