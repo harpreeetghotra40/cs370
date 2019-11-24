@@ -85,12 +85,11 @@ img#login{
 	/*overflow:hidden;*/
 	background-color:#c9beae;
 	font-size:20px;
-	padding-left:75%;
 }
 #login ul.mainMenu{
 	width:100%;
 	/*overflow:hidden;*/
-	text-align:center;
+	text-align:right;
 	color:#000;
 	margin:0;
 	padding:0;
@@ -99,9 +98,10 @@ img#login{
 	/*display:block;*/
 	list-style-type:none;
 	line-height:1.5;
+	text-align:center;
 	/*float:left;*/
 	display:inline-block;
-	padding:0 5%;
+	padding:0 10px;
 }
 #login ul li#account{
 	position:relative;
@@ -112,6 +112,7 @@ img#login{
 	text-align:center;
 	text-decoration:none;
 }
+#login ul li:hover,
 #login ul li a:hover{
 	/*display:block;*/
 	color:#84762a;
