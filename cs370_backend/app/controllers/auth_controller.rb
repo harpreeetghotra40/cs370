@@ -5,7 +5,7 @@ class AuthController < ApplicationController
     # byebug
     @user = User.find_by(email: user_login_params[:email])
     #authenticate comes from BCrypt
-    if @user && @user.authenticate(user_login_params[:password])
+    if @user && @user.password_digest == (user_login_params[:password_digest])
       # encode token comes from ApplicationController
       token = encode_token({ user_id: @user.id })
       render json: { email: @user.email, jwt: token }, status: :accepted
@@ -22,6 +22,6 @@ class AuthController < ApplicationController
 
   def user_login_params
     # params { user: {email: 'chandlerBing@friends.com', password: 'sarcasmKing' } }
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :password_digest)
   end
 end

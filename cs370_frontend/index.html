@@ -11,6 +11,7 @@
         <ul class="mainMenu">
             <li class="account">
                 <a href="create_account.html">Account</a>
+                <span onclick="logout()">&nbsp;Logout</span>
                 <ul class="subMenu">
                     <li><a href="register.html">Register</a></li>
                     <li><a href="confirmreg.php">Confirm registration</a></li>
@@ -49,4 +50,12 @@
 	<div class="copyright"> </div>
 </footer>
 </body>
+
+    <script>
+        function logout(){
+            console.log("halll");
+            loaclStorage.clear();
+            window.location.href = "login.html";
+        }
+    </script>
 </html>
