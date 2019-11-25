@@ -77,7 +77,9 @@ h1#hpj{
 	width:100%;
 }
 img#login{
-    width:5%;
+	width: 20px;
+	margin: 10px 10px 0 0;
+	cursor:pointer;
 }
 #login{
 	width:100%;
@@ -146,6 +148,9 @@ img#login{
 }
 #login ul.mainMenu li#account:hover ul.subMenu{
 	display:block;
+}
+li.logout{
+	cursor:pointer;
 }
 li.c_b{
 	clear:both;

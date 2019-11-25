@@ -21,7 +21,7 @@
     background: rgba(0, 0, 0, .5);
     color: white;
     float: left;
-    border: none;
+    border-radius: 5px;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -77,6 +77,20 @@
     right: 0;
     top: 0;
     width: auto;
+}
+input.applyMarginBottom{
+  margin-bottom:20px;
+}
+input.submit{
+  padding: 15px; 
+  color:white;
+  background-color:#c9beae; 
+  font-weight: bold; 
+  margin-top: 10px;
+  cursor: pointer
+}
+input.submit:hover{
+  background-color:#90887d; 
 }
 /* .submitSearchBtn:hover{
   background-color:#84762a;
