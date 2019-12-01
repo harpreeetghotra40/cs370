@@ -13,12 +13,13 @@
 		<div id="login">
 			<ul class="mainMenu">
 				<li id="account">
-					<a href="create_account.html">Account</a>
-					<ul class="subMenu">
+					<span id="username">Account</span>
+					<!-- <ul class="subMenu">
 						<li><a href="login.html">Sign In</a></li>
 						<li><a href="register.html">Create an account</a></li>
-					</ul>
+					</ul> -->
 				</li>
+				<li class="logout" onclick="logout()">Logout</li>
 				<img id="login" src="images/user.png" />
 			</ul>
 		</div>
@@ -111,6 +112,14 @@
 		<div class="copyright"> </div>
 	</footer>
 	<script>
+		function checkLogin() {
+        if (localStorage.jwt === null || localStorage.jwt === undefined) {
+            location.href = 'login.html';
+        } else {
+            document.querySelector('#username').innerText = localStorage.username;
+        }
+    }
+    checkLogin();
 
 	</script>
 </body>

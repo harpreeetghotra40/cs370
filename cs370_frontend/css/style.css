@@ -118,7 +118,7 @@ img#login{
 	text-align:center;
 	text-decoration:none;
 }
-#login ul li:hover,
+#login ul li.logout:hover,
 #login ul li a:hover{
 	/*display:block;*/
 	color:#84762a;
