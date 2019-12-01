@@ -1,3 +1,13 @@
+$(document).ready(function() {
+	loadMenu();
+	//checkLogin();
+});
+
+function loadMenu() {
+	$nav = $("nav");
+	$nav.html("").load("./menu.html");
+}
+
 function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
         location.href = 'login.html';
@@ -5,7 +15,6 @@ function checkLogin() {
         document.querySelector('#username').innerText = localStorage.username;
     }
 }
-checkLogin();
 
 function makeReservation(event) {
     event.preventDefault();
@@ -66,4 +75,3 @@ function checkLogin() {
         document.querySelector('#username').innerText = localStorage.username;
     }
 }
-checkLogin();
