@@ -1,5 +1,4 @@
 class Airline < ApplicationRecord
-  has_many :users, through: :reservations
-  validates :name, presence: true
+  has_many :flights
   validates :name, uniqueness: true
 end

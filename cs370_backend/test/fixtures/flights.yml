@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  airline: one
+  timeOfDeparture: 2019-12-01 14:58:27
+  timeOfArrival: 2019-12-01 14:58:27
+  airportSource: 1
+  airportDestination: 1
+
+two:
+  airline: two
+  timeOfDeparture: 2019-12-01 14:58:27
+  timeOfArrival: 2019-12-01 14:58:27
+  airportSource: 1
+  airportDestination: 1
