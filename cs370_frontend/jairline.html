@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Home</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/bookFlightWidget.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <div id="login">
+            <ul class="mainMenu">
+                <li id="account">
+                    Account
+                    <ul class="subMenu">
+                        <li><a href="login.html">Sign In/Log Out</a></li>
+                        <li><a href="register.html">Create an account</a></li>
+                    </ul>
+                </li>
+                <li class="logout" onclick="logout()">Logout</li>
+                <img id="login" src="images/user.png" />
+            </ul>
+        </div>
+        <!-- <h1 id="hpj">XXX Airline</h1> -->
+        <div id="logo" class="jack">
+            <a href="jairline.html"><img src="images/air-jack.png" /></a>
+        </div>
+    </header>
+
+    <!-- widget starts here -->
+    <div class="book-flight-widget">
+
+        <!-- tab widget starts here -->
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'Round_Trip')">Round Trip</button>
+            <button class="tablinks" onclick="openCity(event, 'One_Way')">One way</button>
+        </div>
+
+        <div id="Round_Trip" class="tabcontent">
+            <div>
+                <form>
+                    <input class="flyCityA" list="source_roundTrip" name="destination" placeholder="Flying from">
+                    <datalist id="source_roundTrip">
+                        <option value="New York">
+                        <option value="London">
+                        <option value="Taiwan">
+                        <option value="New Delhi">
+                        <option value="Chicago">
+                    </datalist>
+
+                    <input class="flyCityB" list="destinations_roundTrip" name="destination" placeholder="Flying to">
+                    <datalist id="destinations_roundTrip">
+                        <option value="New York">
+                        <option value="London">
+                        <option value="Taiwan">
+                        <option value="New Delhi">
+                        <option value="Chicago">
+                    </datalist>
+
+                    <br>
+                    <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
+                    <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
+                    <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
+                    <input id = "passenger" type="number">
+                    <br>
+                    <input class="submit" type="submit" value = "Search">
+                </form>
+            </div>
+        </div>
+
+        <div id="One_Way" class="tabcontent">
+                <div>
+                    <form id = "makeReservation" onsubmit = "makeReservation(event)">
+                        <input class="flyCityA applyMarginBottom" list="source_oneWay" name="destination" placeholder="Flying from">
+                        <datalist id="source_oneWay">
+                            <option value="New York">
+                            <option value="London">
+                            <option value="Taiwan">
+                            <option value="New Delhi">
+                            <option value="Chicago">
+                        </datalist>
+
+                        <br>
+                        <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
+                        <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
+                        <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
+                        <input id = "passenger" type="number">
+                        <br>
+                        <input class="submit" type="submit" value = "Search"> 
+                    </form>
+                </div>
+            </div>
+        <!-- tab widget ends here -->
+    </div>
+
+
+    <!-- page ends here -->
+    <footer>
+        <div class="copyright"> </div>
+    </footer>
+</body>
+
+<script>
+    function makeReservation(event){
+        event.preventDefault();
+        console.log("what");
+    }
+
+    function clickArrow(event){
+        console.log(event.target);
+        event.target.click();
+    }
+
+    function logout() {
+        console.log("halll");
+        loaclStorage.clear();
+        window.location.href = "login.html";
+    }
+
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        tabcontent[0].style.display = "block";
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</html>

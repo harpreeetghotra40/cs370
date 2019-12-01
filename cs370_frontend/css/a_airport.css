@@ -1,0 +1,57 @@
+section#flight-listingWrap{
+  background:#c9beae;
+  /* overflow:hidden; */
+}
+ul.flight-list{
+  width:80%;
+  height:1000px;
+  margin:40px auto;
+  background:#ccc;
+}
+ul.flight-list li{
+  height:100px;
+  background:rgb(92, 84, 84);
+  border:1px solid #ccc;
+}
+ul.sub-flight-list{
+    background:#dd9933;
+    width:100%;
+    height:100px;
+}
+ul.sub-flight-list li{
+  float:left;
+}
+ul.sub-flight-list li:first-child,
+ul.sub-flight-list li:nth-child(2){
+  width:30%;
+}
+ul.sub-flight-list li{
+  /* display:inline-block; */
+  background:#474239;
+  width:20%;
+  height:100%;
+}
+ul.sub-flight-list li p{
+  text-align:center;
+  color:white;
+  line-height:1.5;
+}
+ul.sub-flight-list li p:first-child{
+  margin-top:10px;
+}
+ul.sub-flight-list li p.price{
+  margin-top:35px;
+}
+.btn{
+  width:100px;
+  text-align:center;
+  background:#c9beae;
+  border-radius: 15px;
+  margin:25px auto;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn:hover {
+  background: #b89a6d;
+}
