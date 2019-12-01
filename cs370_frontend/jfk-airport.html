@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Search Result</title>
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/airport.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<header>
+		<div id="login">
+			<ul class="mainMenu">
+				<li id="account">
+					<a href="create_account.html">Account</a>
+					<ul class="subMenu">
+						<li><a href="login.html">Sign In</a></li>
+						<li><a href="register.html">Create an account</a></li>
+					</ul>
+				</li>
+				<img id="login" src="images/user.png" />
+			</ul>
+		</div>
+		<h1 id="hpj">Welcome to JFK-airport</h1>
+		<!-- <div id="logo">
+			<a href="index.html"><img src="images/flight.png" /></a>
+		</div> -->
+	</header>
+	<section id="airport">
+		<div class="flightInfoWrap">
+			<div class="tab">
+				<button class="tablinks" onclick="openCity(event, 'Departure')" id="defaultOpen">Departure</button>
+				<button class="tablinks" onclick="openCity(event, 'Arrival')">Arrival</button>
+			</div>
+
+			<div id="Departure" class="tabcontent">
+				<table>
+					<tr>
+						<th></th>
+						<th>Airline</th>
+						<th>Flight</th>
+						<th>Departure Time</td>
+						<th>From</th>
+						<th>Status</th>
+					</tr>
+					<tr class="departInfo">
+						<td class="colNumDep">1</td>
+						<td class="airline">H-AIR</td>
+						<td class="flight">H101</td>
+						<td class="depTime">10:00am</td>
+						<td class="flightTo">LAX</td>
+						<td class="flight-status">On Time</td>
+					</tr>
+				</table>
+			</div>
+
+			<div id="Arrival" class="tabcontent">
+				<table>
+					<tr>
+						<th></th>
+						<th>Airline</th>
+						<th>Flight</th>
+						<th>Departure Time</td>
+						<th>From</th>
+						<th>Status</th>
+					</tr>
+					<tr class="arrivalInfo">
+						<td class="colNumArr">1</td>
+						<td class="airline">R-AIR</td>
+						<td class="flight">R101</td>
+						<td class="arrTime">14:00pm</td>
+						<td class="flightFrom">LAX</td>
+						<td class="flight-status">On Time</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div class="copyright"> </div>
+	</footer>
+	<script>
+		function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click();
+		var colNum = document.getElementsByClassName("colNum");
+		for (; colNum.length; colNum++) {
+			colNum
+		}
+	</script>
+</body>
+
+</html>

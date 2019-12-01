@@ -41,27 +41,25 @@
         <div id="Round_Trip" class="tabcontent">
             <div>
                 <form class="makeReservation" onsubmit="makeReservation(event)">
-                    <input class="flyCityA" list="source_roundTrip" name="destination" placeholder="Flying from">
+                    <input class="flyCityA" id="flyCityA_round" list="source_roundTrip" name="destination"
+                        placeholder="Flying from">
                     <datalist id="source_roundTrip">
-                        <option value="New York">
-                        <option value="London">
-                        <option value="Taiwan">
-                        <option value="New Delhi">
-                        <option value="Chicago">
+                        <option value="New York, NY">
+                        <option value="Los Angeles, CA">
+                        <option value="Las Vegas, NV">
                     </datalist>
 
-                    <input class="flyCityB" list="destinations_roundTrip" name="destination" placeholder="Flying to">
+                    <input class="flyCityB" id="flyCityB_round" list="destinations_roundTrip" name="destination"
+                        placeholder="Flying to">
                     <datalist id="destinations_roundTrip">
-                        <option value="New York">
-                        <option value="London">
-                        <option value="Taiwan">
-                        <option value="New Delhi">
-                        <option value="Chicago">
+                        <option value="New York, NY">
+                        <option value="Los Angeles, CA">
+                        <option value="Las Vegas, NV">
                     </datalist>
 
                     <br>
-                    <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
-                    <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
+                    <input type="date" id="flyingFromDate_round" name="flyingFromDate" onfocus="clickArrow(event)">
+                    <input type="date" id="flyingToDate_round" name="flyingToDate" onfocus="clickArrow(event)">
                     <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
                     <input id="passenger" type="number" min="0" placeholder="Travelers">
                     <br>
@@ -73,20 +71,24 @@
         <div id="One_Way" class="tabcontent">
             <div>
                 <form class="makeReservation" onsubmit="makeReservation(event)">
-                    <input class="flyCityA applyMarginBottom" list="source_oneWay" name="destination"
-                        placeholder="Flying from">
+                    <input class="flyCityA applyMarginBottom" id="flyCityA_oneWay" list="source_oneWay"
+                        name="destination" placeholder="Flying from">
                     <datalist id="source_oneWay">
-                        <option value="New York">
-                        <option value="London">
-                        <option value="Taiwan">
-                        <option value="New Delhi">
-                        <option value="Chicago">
+                        <option value="New York, NY">
+                        <option value="Los Angeles, CA">
+                        <option value="Las Vegas, NV">
+                    </datalist>
+
+                    <input class="flyCityB" id="flyCityB_oneWay" list="destinations_oneWay" name="destination"
+                        placeholder="Flying to">
+                    <datalist id="destinations_oneWay">
+                        <option value="New York, NY">
+                        <option value="Los Angeles, CA">
+                        <option value="Las Vegas, NV">
                     </datalist>
 
                     <br>
-                    <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
-                    <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
-                    <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
+                    <input type="date" id="flyingFromDate_oneWay" name="flyingFromDate" onfocus="clickArrow(event)">
                     <input id="passenger" type="number" min="0" placeholder="Travelers">
                     <br>
                     <input class="submit" type="submit" value="Search">
@@ -102,73 +104,6 @@
         <div class="copyright"> </div>
     </footer>
 </body>
-<script>
-    function checkLogin() {
-        if (localStorage.jwt === null || localStorage.jwt === undefined) {
-            location.href = 'login.html';
-        } else {
-            document.querySelector('#username').innerText = localStorage.username;
-        }
-    }
-    checkLogin();
-
-    function makeReservation(event) {
-        event.preventDefault();
-        console.log("what");
-        fetch("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0", {
-                "method": "POST",
-                "headers": {
-                    "x-rapidapi-host": "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com",
-                    "x-rapidapi-key": "5b38741843mshdd4166ecf02734fp1ae7dejsnd28715822552",
-                    "content-type": "application/x-www-form-urlencoded"
-                },
-                "body": {
-                    "inboundDate": "2019-09-10",
-                    "cabinClass": "business",
-                    "children": "0",
-                    "infants": "0",
-                    "country": "US",
-                    "currency": "USD",
-                    "locale": "en-US",
-                    "originPlace": "SFO-sky",
-                    "destinationPlace": "LHR-sky",
-                    "outboundDate": "2019-09-01",
-                    "adults": "1"
-                }
-            })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    }
-
-    function clickArrow(event) {
-        console.log(event.target);
-        event.target.click();
-    }
-
-    function logout() {
-        // console.log("halll");
-        localStorage.clear();
-        window.location.href = "login.html";
-    }
-
-    function openCity(evt, cityName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        tabcontent[0].style.display = "block";
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-</script>
+<script src = "js/index.js"></script>
 
 </html>
