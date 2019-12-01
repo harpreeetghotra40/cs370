@@ -35,6 +35,10 @@ function makeReservation(event) {
         })
 }
 
+function displayResults(flights){
+    console.log(flights);
+}
+
 function clickArrow(event) {
     event.target.click();
 }
