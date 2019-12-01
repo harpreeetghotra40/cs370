@@ -8,7 +8,7 @@ class AuthController < ApplicationController
     if @user && @user.password_digest == (user_login_params[:password_digest])
       # encode token comes from ApplicationController
       token = encode_token({ user_id: @user.id })
-      render json: { email: @user.email, jwt: token }, status: :accepted
+      render json: { name: @user.name, jwt: token }, status: :accepted
     else
       render json: {
         errors: {
