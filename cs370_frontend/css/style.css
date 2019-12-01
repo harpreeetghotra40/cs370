@@ -80,79 +80,112 @@ h1#hpj{
 #logo img{
 	width:100%;
 }
-img#login{
-	width: 20px;
-	margin: 10px 10px 0 0;
-	cursor:pointer;
+nav{
+	margin:0px;
+	padding:0px;
 }
-#login{
-	width:100%;
+.menu{
+	float:right;
+	width:100vw;
 	height:auto;
-	/*overflow:hidden;*/
 	background-color:#c9beae;
-	font-size:20px;
 }
-#login ul.mainMenu{
-	width:100%;
-	/*overflow:hidden;*/
-	text-align:right;
-	color:#000;
-	margin:0;
-	padding:0;
-}
-#login ul li{
-	/*display:block;*/
-	list-style-type:none;
-	line-height:1.5;
+.menuItem{
+	float:right;
+	width:10em;
+	height:3em;
+	line-height:3em;
 	text-align:center;
-	/*float:left;*/
-	display:inline-block;
-	padding:0 10px;
+	background-color:#c9beae;
 }
-#login ul li#account{
-	position:relative;
+.menuItem:hover li{
+	display:block;
 }
-#login li a{
-	width:100%;
-	color:black;
-	text-align:center;
-	text-decoration:none;
-}
-#login ul li.logout:hover,
-#login ul li a:hover{
-	/*display:block;*/
-	color:#84762a;
-	/*background-color: #e6c782;
-	color:#fff;*/
-}
-#login ul li ul.subMenu{
-	position:absolute;
-	top:100%;
-	left:-50%;
+.menuItem li{
 	display:none;
-	width:200%;
-	height:auto;
-	margin:0;
-	padding:0;
-	background-color:#ccc;
-	color:green;
-	z-index:9;
-	border:1px solid #4a4a4a;
+	opacity:0.8;
+	background-color:#c9beae;
 }
-#login ul ul li{
-	width:100%;
-	height:100%;
+.menu a{
 	color:black;
 	display:block;
-	overflow:hidden;
-	padding:3% 0;
 }
-#login li li a{
-	width:100%;
+.menu a:hover{
+	background-color:#84762a;
 }
-#login ul.mainMenu li#account:hover ul.subMenu{
-	display:block;
-}
+/* img#login{ */
+	/* width: 20px; */
+	/* margin: 10px 10px 0 0; */
+	/* cursor:pointer; */
+/* } */
+/* #login{ */
+	/* width:100%; */
+	/* height:auto; */
+	/* /*overflow:hidden;*/ */
+	/* background-color:#c9beae; */
+	/* font-size:20px; */
+/* } */
+/* #login ul.mainMenu{ */
+	/* width:100%; */
+	/* /*overflow:hidden;*/ */
+	/* text-align:right; */
+	/* color:#000; */
+	/* margin:0; */
+	/* padding:0; */
+/* } */
+/* #login ul li{ */
+	/* /*display:block;*/ */
+	/* list-style-type:none; */
+	/* line-height:1.5; */
+	/* text-align:center; */
+	/* /*float:left;*/ */
+	/* display:inline-block; */
+	/* padding:0 10px; */
+/* } */
+/* #login ul li#account{ */
+	/* position:relative; */
+/* } */
+/* #login li a{ */
+	/* width:100%; */
+	/* color:black; */
+	/* text-align:center; */
+	/* text-decoration:none; */
+/* } */
+/* #login ul li.logout:hover, */
+/* #login ul li a:hover{ */
+	/* /*display:block;*/ */
+	/* color:#84762a; */
+	/* /*background-color: #e6c782; */
+	/* color:#fff;*/ */
+/* } */
+/* #login ul li ul.subMenu{ */
+	/* position:absolute; */
+	/* top:100%; */
+	/* left:-50%; */
+	/* display:none; */
+	/* width:200%; */
+	/* height:auto; */
+	/* margin:0; */
+	/* padding:0; */
+	/* background-color:#ccc; */
+	/* color:green; */
+	/* z-index:9; */
+	/* border:1px solid #4a4a4a; */
+/* } */
+/* #login ul ul li{ */
+	/* width:100%; */
+	/* height:100%; */
+	/* color:black; */
+	/* display:block; */
+	/* overflow:hidden; */
+	/* padding:3% 0; */
+/* } */
+/* #login li li a{ */
+	/* width:100%; */
+/* } */
+/* #login ul.mainMenu li#account:hover ul.subMenu{ */
+	/* display:block; */
+/* } */
 li.logout{
 	cursor:pointer;
 }
