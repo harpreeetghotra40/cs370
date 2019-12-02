@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 	<title>Login</title>
-	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="js/index.js" defer></script>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/bookFlightWidget.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
 <body>
@@ -46,94 +47,94 @@
     <footer>
 		<div class="copyright"> </div>
     </footer>
-    <script>
-		var myInput = document.getElementById("psw");
-		var letter = document.getElementById("letter");
-		var capital = document.getElementById("capital");
-		var number = document.getElementById("number");
-		var length = document.getElementById("length");
+</body>
+<script>
+	var myInput = document.getElementById("psw");
+	var letter = document.getElementById("letter");
+	var capital = document.getElementById("capital");
+	var number = document.getElementById("number");
+	var length = document.getElementById("length");
 
 
-		function login(event) {
-				event.preventDefault();
-				let email = document.querySelector('#email').value;
-				let password_digest = document.querySelector('#psw').value;
-				document.querySelector('#actualLoginForm').reset();
-				fetch("http://localhost:3000/login", {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						'Accepts': 'application/json'
-					},
-					body: JSON.stringify({
-						user: {
-							email,
-							password_digest
-						}
-					})
-				})
-				.then(res => res.json())
-				.then(res => {
-					if(res.name){
-						console.log(res);
-						localStorage.setItem('jwt', res.jwt);
-						localStorage.setItem('username', res.name);
-						window.location.href = "index.html";
+	function login(event) {
+			event.preventDefault();
+			let email = document.querySelector('#email').value;
+			let password_digest = document.querySelector('#psw').value;
+			document.querySelector('#actualLoginForm').reset();
+			fetch("http://localhost:3000/login", {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'Accepts': 'application/json'
+				},
+				body: JSON.stringify({
+					user: {
+						email,
+						password_digest
 					}
 				})
-			}
-		
-		// When the user clicks on the password field, show the message box
-		myInput.onfocus = function() {
-		  document.getElementById("message").style.display = "block";
+			})
+			.then(res => res.json())
+			.then(res => {
+				if(res.name){
+					console.log(res);
+					localStorage.setItem('jwt', res.jwt);
+					localStorage.setItem('username', res.name);
+					window.location.href = "index.html";
+				}
+			})
 		}
-		
-		// When the user clicks outside of the password field, hide the message box
-		myInput.onblur = function() {
-		  document.getElementById("message").style.display = "none";
-		}
-		
-		// When the user starts to type something inside the password field
-		myInput.onkeyup = function() {
-		  // Validate lowercase letters
-		  var lowerCaseLetters = /[a-z]/g;
-		//   if(myInput.value.match(lowerCaseLetters)) {  
-		// 	letter.classList.remove("invalid");
-		// 	letter.classList.add("valid");
-		//   } else {
-		// 	letter.classList.remove("valid");
-		// 	letter.classList.add("invalid");
-		//   }
-		  
-		  // Validate capital letters
-		//   var upperCaseLetters = /[A-Z]/g;
-		//   if(myInput.value.match(upperCaseLetters)) {  
-		// 	capital.classList.remove("invalid");
-		// 	capital.classList.add("valid");
-		//   } else {
-		// 	capital.classList.remove("valid");
-		// 	capital.classList.add("invalid");
-		//   }
-		
-		  // Validate numbers
-		  var numbers = /[0-9]/g;
-		  if(myInput.value.match(numbers)) {  
-			number.classList.remove("invalid");
-			number.classList.add("valid");
-		  } else {
-			number.classList.remove("valid");
-			number.classList.add("invalid");
-		  }
-		  
-		  // Validate length
-		//   if(myInput.value.length >= 8) {
-		// 	length.classList.remove("invalid");
-		// 	length.classList.add("valid");
-		//   } else {
-		// 	length.classList.remove("valid");
-		// 	length.classList.add("invalid");
-		//   }
-		}
-	</script>
-</body>
+	
+	// When the user clicks on the password field, show the message box
+	myInput.onfocus = function() {
+	  document.getElementById("message").style.display = "block";
+	}
+	
+	// When the user clicks outside of the password field, hide the message box
+	myInput.onblur = function() {
+	  document.getElementById("message").style.display = "none";
+	}
+	
+	// When the user starts to type something inside the password field
+	myInput.onkeyup = function() {
+	  // Validate lowercase letters
+	  var lowerCaseLetters = /[a-z]/g;
+	//   if(myInput.value.match(lowerCaseLetters)) {  
+	// 	letter.classList.remove("invalid");
+	// 	letter.classList.add("valid");
+	//   } else {
+	// 	letter.classList.remove("valid");
+	// 	letter.classList.add("invalid");
+	//   }
+	  
+	  // Validate capital letters
+	//   var upperCaseLetters = /[A-Z]/g;
+	//   if(myInput.value.match(upperCaseLetters)) {  
+	// 	capital.classList.remove("invalid");
+	// 	capital.classList.add("valid");
+	//   } else {
+	// 	capital.classList.remove("valid");
+	// 	capital.classList.add("invalid");
+	//   }
+	
+	  // Validate numbers
+	  var numbers = /[0-9]/g;
+	  if(myInput.value.match(numbers)) {  
+		number.classList.remove("invalid");
+		number.classList.add("valid");
+	  } else {
+		number.classList.remove("valid");
+		number.classList.add("invalid");
+	  }
+	  
+	  // Validate length
+	//   if(myInput.value.length >= 8) {
+	// 	length.classList.remove("invalid");
+	// 	length.classList.add("valid");
+	//   } else {
+	// 	length.classList.remove("valid");
+	// 	length.classList.add("invalid");
+	//   }
+	}
+</script>
 </html>
