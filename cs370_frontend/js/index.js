@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	loadMenu();
-	checkLogin();
 });
 
 function loadMenu() {
