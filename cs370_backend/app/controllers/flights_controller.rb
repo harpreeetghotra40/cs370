@@ -12,10 +12,6 @@ class FlightsController < ApplicationController
       flight.timeOfDeparture.year == date.year &&
       flight.timeOfDeparture.month == date.month
     end
-    flights = flights.map do |flight|
-      airline = Airline.find(flight.airline_id)
-      flight[:airline] = airline.name
-    end
     render json: flights.as_json(
       except: [:id, :updated_at, :created_at],
     )
