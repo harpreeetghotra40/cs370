@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	loadMenu();
-	//checkLogin();
+	checkLogin();
 });
 
 function loadMenu() {
