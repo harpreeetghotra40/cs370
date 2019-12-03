@@ -2,10 +2,7 @@ $(document).ready(function() {
 	loadMenu();
 });
 
-function loadMenu() {
-	$nav = $("nav");
-	$nav.html("").load("./menu.html");
-}
+
 
 function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
@@ -77,4 +74,8 @@ function checkLogin() {
     } else {
         document.querySelector('#username').innerText = localStorage.username;
     }
+}
+function loadMenu() {
+	$nav = $("nav");
+    $nav.html("").load("./menu.html");
 }
