@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	loadMenu();
-	loadBookFlightWidget();
-	loadFlights();
+	if ($(".book-flight-widget").length) loadBookFlightWidget();
+	if ($("#flight-container").length)loadFlights();
+	
 });
-
 function makeReservation(event) {
     event.preventDefault();
     let flyCityA_round = document.querySelector("#flyCityA_round").value
@@ -31,11 +31,9 @@ function makeReservation(event) {
             displayResults(response);
         })
 }
-
 function displayResults(flights){
     console.log(flights);
 }
-
 function clickArrow(event) {
     event.target.click();
 }
