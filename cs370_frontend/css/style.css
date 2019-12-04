@@ -122,48 +122,6 @@ h1#hpj{
 .sub-menu-item:hover{
 	background-color:#84762a;
 }
-
-#login li a{
-	width:100%;
-	color:black;
-	text-align:center;
-	text-decoration:none;
-}
-#login ul li.logout:hover,
-#login ul li a:hover{
-	/*display:block;*/
-	color:#84762a;
-	/*background-color: #e6c782;
-	color:#fff;*/
-}
-#login ul li ul.subMenu{
-	position:absolute;
-	top:100%;
-	left:-50%;
-	display:none;
-	width:200%;
-	height:auto;
-	margin:0;
-	padding:0;
-	background-color:#ccc;
-	color:green;
-	z-index:9;
-	border:1px solid #4a4a4a;
-}
-#login ul ul li{
-	width:100%;
-	height:100%;
-	color:black;
-	display:block;
-	overflow:hidden;
-	padding:3% 0;
-}
-#login li li a{
-	width:100%;
-}
-#login ul.mainMenu li#account:hover ul.subMenu{
-	display:block;
-}
 li.logout{
 	cursor:pointer;
 }
