@@ -18,6 +18,8 @@ Airport.find_or_create_by(:name => "JFK", :location => "New York, NY")
 Airport.find_or_create_by(:name => "LAX", :location => "Los Angeles, CA")
 Airport.find_or_create_by(:name => "LAS", :location => "Las Vegas, NV")
 
+#destroy all flights
+Flight.destroy_all
 #creaing flights
 for i in 0..100
   randDate = DateTime.now + rand(30)
@@ -28,7 +30,7 @@ for i in 0..100
   while airportSource.id == airportDestination.id
     airportDestination = Airport.all.sample
   end
-  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id)
+  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200))
 end
 
 #creaing flights
@@ -41,7 +43,7 @@ for i in 0..100
   while airportSource.id == airportDestination.id
     airportDestination = Airport.all.sample
   end
-  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id)
+  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200))
 end
 
 #creaing flights
@@ -54,5 +56,5 @@ for i in 0..100
   while airportSource.id == airportDestination.id
     airportDestination = Airport.all.sample
   end
-  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id)
+  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200))
 end
