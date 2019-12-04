@@ -4,42 +4,35 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Search Result</title>
+	<script src="js/index.js" defer></script>
 	<link href="css/style.css" rel="stylesheet" type="text/css" />
 	<link href="css/search_result.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
 	<header>
-		<div id="login">
-			<ul class="mainMenu">
-				<li id="account">
-					<span id="username">Account</span>
-					<!-- <ul class="subMenu">
-						<li><a href="login.html">Sign In</a></li>
-						<li><a href="register.html">Create an account</a></li>
-					</ul> -->
-				</li>
-				<li class="logout" onclick="logout()">Logout</li>
-				<img id="login" src="images/user.png" />
-			</ul>
-		</div>
+		<nav>
+		</nav>
 		<h1 id="hpj">HPJ Flight Booking System</h1>
 		<div id="logo">
 			<a href="index.html"><img src="images/flight.png" /></a>
 		</div>
 	</header>
-	<section id="flight-listingWrap">
-		<ul class="flight-list">
+	<section id="flight_listingWrap">
+		<ul class="flight_list">
 			<li>
-				<ul class="sub-flight-list">
+				<ul class="sub_flight_list" >
 					<li>
-						<p>Flight Time</p>
+						<p class="flightName">Flight</p>
+					</li>
+					<li>
+						<p class="flightTime">Flight Time</p>
 						<p>10;00am - 4:00pm</p>
 						<p class="airline">XX Air</p>
 					</li>
 					<li>
 						<p class="duration">Duaration</p>
-						<p class="from-to">Flying from - Flying to</p>
+						<p class="from_to">Flying from - Flying to</p>
 					</li>
 					<li>
 						<p class="price">$Price</p>
@@ -55,6 +48,7 @@
 		<div class="copyright"> </div>
 	</footer>
 	<script src="js/index.js"></script>
+	<script src="js/search-result.js"></script>
 </body>
 
 </html>

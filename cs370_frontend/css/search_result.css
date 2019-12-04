@@ -1,45 +1,45 @@
-section#flight-listingWrap{
+section#flight_listingWrap{
   background:#c9beae;
   /* overflow:hidden; */
 }
-ul.flight-list{
+ul.flight_list{
   width:80%;
   height:1000px;
   margin:40px auto;
   background:#ccc;
 }
-ul.flight-list li{
+ul.flight_list li{
   height:100px;
   background:rgb(92, 84, 84);
   border:1px solid #ccc;
 }
-ul.sub-flight-list{
+ul.sub_flight_list{
     background:#dd9933;
     width:100%;
     height:100px;
 }
-ul.sub-flight-list li{
+ul.sub_flight_list li{
   float:left;
 }
-ul.sub-flight-list li:first-child,
-ul.sub-flight-list li:nth-child(2){
-  width:30%;
+ul.sub_flight_list li:first-child,
+ul.sub_flight_list li:nth-child(2){
+  width:20%;
 }
-ul.sub-flight-list li{
+ul.sub_flight_list li{
   /* display:inline-block; */
   background:#474239;
   width:20%;
   height:100%;
 }
-ul.sub-flight-list li p{
+ul.sub_flight_list li p{
   text-align:center;
   color:white;
   line-height:1.5;
 }
-ul.sub-flight-list li p:first-child{
+ul.sub_flight_list li p:first-child{
   margin-top:10px;
 }
-ul.sub-flight-list li p.price{
+ul.sub_flight_list li p.price{
   margin-top:35px;
 }
 .btn{

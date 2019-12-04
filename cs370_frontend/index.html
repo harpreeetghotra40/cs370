@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<title>Flight Bookings</title>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/index.js" defer></script>
+
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/bookFlightWidget.css" rel="stylesheet" type="text/css" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -32,7 +32,7 @@
 
         <div id="Round_Trip" class="tabcontent">
             <div>
-                <form class="makeReservation" onsubmit="makeReservation(event)">
+                <form class="makeReservation" onsubmit="makeReservation(event)" action="/search-result.html">
                     <input class="flyCityA" id="flyCityA_round" list="source_roundTrip" name="destination"
                         placeholder="Flying from">
                     <datalist id="source_roundTrip">
