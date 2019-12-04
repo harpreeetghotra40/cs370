@@ -28,6 +28,22 @@ function loadFlights() {
 
 function pullFlightdata(count) {
 	if(count > 0) {
+    fetch("http://localhost:3000/flights", {
+            "method": "POST",
+            "headers": {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
+            },
+            body: JSON.stringify({
+                "airportSource": flyCityA_oneWay,
+                "airportDestination": flyCityB_oneWay,
+                "date": flyingFromDate_oneWay
+            })
+        })
+        .then(response => response.json())
+        .then(response => {
+            displayResults(response);
+        })
 		$.ajax({
 			url: './user-flight.html',
 			type: 'GET',
