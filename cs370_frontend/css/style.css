@@ -80,38 +80,49 @@ h1#hpj{
 #logo img{
 	width:100%;
 }
-img#login{
-	width: 20px;
-	margin: 10px 10px 0 0;
-	cursor:pointer;
-}
-#login{
-	width:100%;
-	height:auto;
-	/*overflow:hidden;*/
-	background-color:#c9beae;
-	font-size:20px;
-}
-#login ul.mainMenu{
-	width:100%;
-	/*overflow:hidden;*/
-	text-align:right;
-	color:#000;
+.user-Image{
+	width: 2rem;
 	margin:0;
-	padding:0;
 }
-#login ul li{
-	/*display:block;*/
-	list-style-type:none;
-	line-height:1.5;
-	text-align:center;
-	/*float:left;*/
+.menu{
+	width:100vw;
+	height:2rem;
+	text-align:right;
+	margin:0px;
+	padding:0px;
+	background-color:#c9beae;
+	font-size:1.5rem;
+}
+.menu a{
+	width:8rem;
+	height:2rem;
+	margin:0px;
+	padding:0px;
+	text-decoration: none;
+	color:#000;
+}
+.menu-item, .menu-item a{
+	width:8rem;
+	height:2rem;	
+	text-decoration: none;
 	display:inline-block;
-	padding:0 10px;
+	cursor: default;
+	vertical-align:top;
+	text-align:center;
+	line-height:2rem;
 }
-#login ul li#account{
-	position:relative;
+.menu-item:hover .sub-menu{
+	display:block;
 }
+.sub-menu{
+	background-color:#c9beae;
+	font-size:1.25rem;
+	display:none;
+}
+.sub-menu-item:hover{
+	background-color:#84762a;
+}
+
 #login li a{
 	width:100%;
 	color:black;
