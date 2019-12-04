@@ -1,9 +1,9 @@
 $(document).ready(function() {
     loadMenu();
     loadBookFlightWidget();
-	loadMenu();
 	$("#round-trip").click();
 });
+
 
 function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {

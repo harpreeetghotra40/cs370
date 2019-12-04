@@ -21,68 +21,6 @@
 
     <!-- widget starts here -->
     <div class="book-flight-widget">
-
-        <!-- tab widget starts here -->
-        <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'Round_Trip')">Round Trip</button>
-            <button class="tablinks" onclick="openCity(event, 'One_Way')">One way</button>
-        </div>
-
-        <div id="Round_Trip" class="tabcontent">
-            <div>
-                <form>
-                    <input class="flyCityA" list="source_roundTrip" name="destination" placeholder="Flying from">
-                    <datalist id="source_roundTrip">
-                        <option value="New York">
-                        <option value="London">
-                        <option value="Taiwan">
-                        <option value="New Delhi">
-                        <option value="Chicago">
-                    </datalist>
-
-                    <input class="flyCityB" list="destinations_roundTrip" name="destination" placeholder="Flying to">
-                    <datalist id="destinations_roundTrip">
-                        <option value="New York">
-                        <option value="London">
-                        <option value="Taiwan">
-                        <option value="New Delhi">
-                        <option value="Chicago">
-                    </datalist>
-
-                    <br>
-                    <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
-                    <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
-                    <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
-                    <input id = "passenger" type="number">
-                    <br>
-                    <input class="submit" type="submit" value = "Search">
-                </form>
-            </div>
-        </div>
-
-        <div id="One_Way" class="tabcontent">
-                <div>
-                    <form id = "makeReservation" onsubmit = "makeReservation(event)">
-                        <input class="flyCityA applyMarginBottom" list="source_oneWay" name="destination" placeholder="Flying from">
-                        <datalist id="source_oneWay">
-                            <option value="New York">
-                            <option value="London">
-                            <option value="Taiwan">
-                            <option value="New Delhi">
-                            <option value="Chicago">
-                        </datalist>
-
-                        <br>
-                        <input type="date" name="flyingFromDate" onfocus="clickArrow(event)">
-                        <input type="date" name="flyingToDate" onfocus="clickArrow(event)">
-                        <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
-                        <input id = "passenger" type="number">
-                        <br>
-                        <input class="submit" type="submit" value = "Search"> 
-                    </form>
-                </div>
-            </div>
-        <!-- tab widget ends here -->
     </div>
 
 
