@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	loadMenu();
+    loadMenu();
+    loadBookFlightWidget();
 });
 
 
@@ -78,4 +79,8 @@ function checkLogin() {
 function loadMenu() {
 	$nav = $("nav");
     $nav.html("").load("./menu.html");
+}
+function loadBookFlightWidget(){
+    $widget = document.querySelector(".book-flight-widget");
+    $($widget).html("").load("./book-flight-widget.html");
 }
