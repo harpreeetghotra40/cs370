@@ -1,8 +1,7 @@
-// $(document).ready(function() {
-	// loadMenu();
-// });
-
-
+$(document).ready(function() {
+	loadMenu();
+	$("#round-trip").click();
+});
 
 function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
