@@ -1,11 +1,8 @@
 $(document).ready(function() {
-<<<<<<< HEAD
     loadMenu();
     loadBookFlightWidget();
-=======
 	loadMenu();
 	$("#round-trip").click();
->>>>>>> 294125ad061aea1aab2668597f2a57fd41d99374
 });
 
 function checkLogin() {
