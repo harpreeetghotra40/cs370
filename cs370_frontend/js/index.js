@@ -1,17 +1,8 @@
 $(document).ready(function() {
-    loadMenu();
-    loadBookFlightWidget();
-	$("#round-trip").click();
+	loadMenu();
+	loadBookFlightWidget();
+	loadFlights();
 });
-
-
-function checkLogin() {
-    if (localStorage.jwt === null || localStorage.jwt === undefined) {
-        location.href = 'login.html';
-    } else {
-        document.querySelector('#username').innerText = localStorage.username;
-    }
-}
 
 function makeReservation(event) {
     event.preventDefault();
@@ -48,13 +39,6 @@ function displayResults(flights){
 function clickArrow(event) {
     event.target.click();
 }
-
-function logout() {
-    // console.log("halll");
-    localStorage.clear();
-    window.location.href = "login.html";
-}
-
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -71,16 +55,62 @@ function openCity(evt, cityName) {
 }
 function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
-        location.href = 'login.html';
+		
     } else {
-        document.querySelector('#username').innerText = localStorage.username;
+        $('#account').html("").load("user-login.html");
     }
+}
+function signOut() {
+    localStorage.clear();
+    // window.location.href = "login.html";
 }
 function loadMenu() {
 	$nav = $("nav");
-    $nav.html("").load("./menu.html");
+    $nav.html("").load("./menu.html", function() {
+		checkLogin();
+	});
 }
 function loadBookFlightWidget(){
-    $widget = document.querySelector(".book-flight-widget");
+    $widget = $(".book-flight-widget");
     $($widget).html("").load("./book-flight-widget.html");
+}
+function loadFlights() {
+	$flightContainer = $("#flight-container");
+	$flightCount = 10;
+	pullFlightdata($flightCount);
+
+}
+function pullFlightdata(count) {
+	if(count > 0) {
+    // fetch("http://localhost:3000/flights", {
+            // "method": "POST",
+            // "headers": {
+                // 'Content-Type': 'application/json',
+                // 'Accepts': 'application/json'
+            // },
+            // body: JSON.stringify({
+                // "airportSource": flyCityA_oneWay,
+                // "airportDestination": flyCityB_oneWay,
+                // "date": flyingFromDate_oneWay
+            // })
+        // })
+        // .then(response => response.json())
+        // .then(response => {
+            // displayResults(response);
+        // })
+		$.ajax({
+			url: './user-flight.html',
+			type: 'GET',
+			async: 'true',
+			success: function(result) {
+				console.log(count + "testing");
+				$flight = $(document.createElement("div"))
+					.attr({"class" : "flight"});
+				$flight.html(result);
+				$($flight).find(".code").text(count + "testing");
+				$($flightContainer).append($flight);
+				pullFlightdata(count - 1);
+			}
+		});
+	}
 }
