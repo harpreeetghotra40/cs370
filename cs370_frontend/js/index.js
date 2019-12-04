@@ -1,6 +1,6 @@
-$(document).ready(function() {
-	loadMenu();
-});
+// $(document).ready(function() {
+	// loadMenu();
+// });
 
 
 
