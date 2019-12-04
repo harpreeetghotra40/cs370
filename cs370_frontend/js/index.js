@@ -1,8 +1,7 @@
 $(document).ready(function() {
 	loadMenu();
 	if ($(".book-flight-widget").length) loadBookFlightWidget();
-	if ($("#flight-container").length)loadFlights();
-	
+	if ($("#flight-container").length)loadFlights();	
 });
 function makeReservation(event) {
     event.preventDefault();
@@ -55,7 +54,17 @@ function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
 		
     } else {
-        $('#account').html("").load("user-login.html");
+		$('#account').html("").load("user-login.html");
+		// $account = $('#account');
+        // $.ajax({
+			// url: 'user-login.html',
+			// type: 'GET',
+			// async: 'true',
+			// success: function(result) {
+				// $account.html(result);
+				// $account.find("a:first").text(localStorage.username);
+			// }
+		// });
     }
 }
 function signOut() {
@@ -106,7 +115,7 @@ function pullFlightdata(count) {
 					.attr({"class" : "flight"});
 				$flight.html(result);
 				$($flight).find(".code").text(count + "testing");
-				$($flightContainer).append($flight);
+				$flightContainer.append($flight);
 				pullFlightdata(count - 1);
 			}
 		});
