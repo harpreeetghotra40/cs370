@@ -88,39 +88,30 @@ h1#hpj{
 	width:100vw;
 	height:2rem;
 	text-align:right;
-	margin:0px;
-	padding:0px;
 	background-color:#c9beae;
 	font-size:1.5rem;
 }
-.menu a{
-	width:8rem;
-	height:2rem;
-	margin:0px;
-	padding:0px;
-	text-decoration: none;
-	color:#000;
-}
-.menu-item, .menu-item a{
+.menu-item, .menu a{
 	width:8rem;
 	height:2rem;	
 	text-decoration: none;
+	color:#000;
 	display:inline-block;
 	cursor: default;
 	vertical-align:top;
 	text-align:center;
 	line-height:2rem;
 }
-.menu-item:hover .sub-menu{
-	display:block;
+.menu a:hover{
+	background-color:#84762a;
 }
 .sub-menu{
 	background-color:#c9beae;
 	font-size:1.25rem;
 	display:none;
 }
-.sub-menu-item:hover{
-	background-color:#84762a;
+.menu-item:hover .sub-menu{
+	display:block;
 }
 li.logout{
 	cursor:pointer;
