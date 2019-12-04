@@ -54,17 +54,17 @@ function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
 		
     } else {
-		$('#account').html("").load("user-login.html");
-		// $account = $('#account');
-        // $.ajax({
-			// url: 'user-login.html',
-			// type: 'GET',
-			// async: 'true',
-			// success: function(result) {
-				// $account.html(result);
-				// $account.find("a:first").text(localStorage.username);
-			// }
-		// });
+		// $('#account').html("").load("user-login.html");
+		$account = $('#account');
+        $.ajax({
+			url: 'user-login.html',
+			type: 'GET',
+			async: 'true',
+			success: function(result) {
+				$account.html(result);
+				$account.find("a:first").text(localStorage.username);
+			}
+		});
     }
 }
 function signOut() {
@@ -83,12 +83,32 @@ function loadBookFlightWidget(){
 }
 function loadFlights() {
 	$flightContainer = $("#flight-container");
-	$flightCount = 10;
-	pullFlightdata($flightCount);
-
+	$from = "Los Angeles, CA";
+	$to = "New York, NY";
+	$date = "2019-12-10";
+	fetch("http://localhost:3000/flights", {
+            "method": "POST",
+            "headers": {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
+            },
+            body: JSON.stringify({
+                "airportSource": $from,
+                "airportDestination": $to,
+                "date": $date
+            })
+        })
+        .then(response => response.json())
+        .then(response => {
+			$flights = response;			
+			pullFlightdata($flights, $flights.length);
+        })
 }
-function pullFlightdata(count) {
+function pullFlightdata(data, count) {
 	if(count > 0) {
+	// $from = "Los Angeles, CA";
+	// $to = "New York, NY";
+	// $date = "2019-12-10";
     // fetch("http://localhost:3000/flights", {
             // "method": "POST",
             // "headers": {
@@ -96,9 +116,9 @@ function pullFlightdata(count) {
                 // 'Accepts': 'application/json'
             // },
             // body: JSON.stringify({
-                // "airportSource": flyCityA_oneWay,
-                // "airportDestination": flyCityB_oneWay,
-                // "date": flyingFromDate_oneWay
+                // "airportSource": $from,
+                // "airportDestination": $to,
+                // "date": $date
             // })
         // })
         // .then(response => response.json())
@@ -114,9 +134,13 @@ function pullFlightdata(count) {
 				$flight = $(document.createElement("div"))
 					.attr({"class" : "flight"});
 				$flight.html(result);
-				$($flight).find(".code").text(count + "testing");
+				$($flight).find(".code").text(data[data.length-count].airline_id);
+				$($flight).find(".from").text(data[data.length-count].airportSource);
+				$($flight).find(".from-time").text(data[data.length-count].timeOfDeparture);
+				$($flight).find(".to").text(data[data.length-count].airportDestination);
+				$($flight).find(".to-time").text(data[data.length-count].timeOfArrival);
 				$flightContainer.append($flight);
-				pullFlightdata(count - 1);
+				pullFlightdata(data, count - 1);
 			}
 		});
 	}
