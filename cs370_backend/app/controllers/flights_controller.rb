@@ -15,7 +15,7 @@ class FlightsController < ApplicationController
       end
     else
       flights = Flight.all.select do |flight|
-        flight.airline.name == params[:airline]
+        flight.airline.name == params[:airline] &&
         flight.airportSource == airportSource.id &&
         flight.airportDestination == airportDestination.id &&
         flight.timeOfDeparture.day == date.day &&

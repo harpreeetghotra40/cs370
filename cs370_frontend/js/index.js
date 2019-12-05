@@ -241,14 +241,6 @@ function buyTicket() {
 	$ticket = $ticket.parentElement;
 	$flight = $($ticket).find(".flightCode").text();
 	localStorage.setItem('flightID',$flight);
-	// localStorage.setItem('airline',$($ticket).find(".airline").text());
-	// localStorage.setItem('from-airport',$($ticket).find(".from-airport").text());
-	// localStorage.setItem('from-time',$($ticket).find(".from-time").text());
-	// localStorage.setItem('to-airport',$($ticket).find(".to-airport").text());
-	// localStorage.setItem('to-time',$($ticket).find(".to-time").text());
-	// localStorage.setItem('duration',$($ticket).find(".duration").text());
-	// localStorage.setItem('price',$($ticket).find(".price").text());
-	// localStorage.setItem('seats',$($ticket).find(".seats").text());
 	window.location.href = "buy-ticket.html";
 }
 function loadTicketDetails() {
