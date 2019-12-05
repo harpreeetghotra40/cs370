@@ -1,3 +1,8 @@
+section#itinerary h2{
+	font-size:20px;
+	text-align: center;
+	margin: 20px;
+}
 .flight{
 	width:80vw;
 	height:10rem;
@@ -6,15 +11,21 @@
 	text-align:center;
 	display:grid;
 	grid-template-areas:
-	'info info info info info'
-	'from from middle to to'
-	'from from middle to to';
+	'info info flightCode seat seat buy'
+	'from from middle to to buy'
+	'from from middle to to buy';
 	background-color:#ccc;
 	color:#473d27;
 	border:1px solid #8b826d;
 }
 .airline{
 	grid-area: info;
+}
+.flightCode{
+	grid-area:flightCode;
+}
+.seat{
+	grid-area:seat;
 }
 .from-wrap{
 	grid-area: from;
@@ -28,6 +39,12 @@
 .arrow{
 	grid-area: middle;
 	text-align:center;
+}
+.buyButton{
+	grid-area: buy;
+	padding:5px;
+	background:#c9beae;
+	border: 5px solid black;
 }
 .arrow img{
 	width:4rem;
