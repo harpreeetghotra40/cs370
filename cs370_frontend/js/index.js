@@ -114,14 +114,43 @@ function pullFlightdata(data, count) {
 				$flight = $(document.createElement("div"))
 					.attr({"class" : "flight"});
 				$flight.html(result);
-				$($flight).find(".code").text(data[data.length-count].airline_id);
-				$($flight).find(".from-airport").text(data[data.length-count].airportSource);
-				$($flight).find(".from-time").text(data[data.length-count].timeOfDeparture);
-				$($flight).find(".to-airport").text(data[data.length-count].airportDestination);
-				$($flight).find(".to-time").text(data[data.length-count].timeOfArrival);
+				$($flight).find(".airline").text(getAirline(data[data.length-count].airline_id));
+				$($flight).find(".from-airport").text(getAirport(data[data.length-count].airportSource));
+				$($flight).find(".from-time").text(readTime(data[data.length-count].timeOfDeparture));
+				$($flight).find(".to-airport").text(getAirport(data[data.length-count].airportDestination));
+				$($flight).find(".to-time").text(readTime(data[data.length-count].timeOfArrival));
+				$($flight).find(".duration").text(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
 				$flightContainer.append($flight);
 				pullFlightdata(data, count - 1);
 			}
 		});
 	}
+}
+function getAirline(airline) {
+	switch(airline){
+		case 1: return "H-Air";
+		case 2: return "P-Air";
+		case 3: return "J-Air";
+		default: return "Airline";
+	}
+}
+function getAirport(airport) {
+	switch(airport){
+		case 1: return "JFK";
+		case 2: return "LAX";
+		case 3: return "Airport";
+		default: return "Airport";
+	}
+}
+function readTime(time) {
+	$date = new Date(time);
+	return $date.toUTCString();
+}
+function getDuration(from, to) {
+	$start = new Date(from);
+	$end = new Date(to);
+	$minutes = parseInt(($end.getTime() - $start.getTime())/(60*1000));
+	$m = $minutes%60;
+	$h = Math.floor($minutes/60);
+	return $h + " hours " + $m + " minutes";
 }
