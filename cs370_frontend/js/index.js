@@ -176,10 +176,13 @@ function loadSearchFlightPage(from, to, date, airline) {
 	localStorage.setItem('to',to);
 	localStorage.setItem('date',date);
 	localStorage.setItem('airline', airline);
+	console.log(localStorage.airline);
 	window.location.href = "search-itinerary.html";
 }
 function loadSearchFlightData(from, to, date, airline) {
 	$flightContainer = $("#flight-result-container");
+	
+	console.log(localStorage.airline);
 	fetch("http://localhost:3000/flights", {
 		"method": "POST",
 		"headers": {
