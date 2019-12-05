@@ -19,9 +19,9 @@ Airport.find_or_create_by(:name => "LAX", :location => "Los Angeles, CA")
 Airport.find_or_create_by(:name => "LAS", :location => "Las Vegas, NV")
 
 #destroy all flights
-Flight.destroy_all
+# Flight.destroy_all
 #creaing flights
-for i in 0..100
+for i in 0..200
   randDate = DateTime.now + rand(30)
   randArrival = randDate + 0.3
   airlineID = Airline.find_by(:name => "Hairline").id
@@ -34,7 +34,7 @@ for i in 0..100
 end
 
 #creaing flights
-for i in 0..100
+for i in 0..200
   randDate = DateTime.now + rand(30)
   randArrival = randDate + 0.3
   airlineID = Airline.find_by(:name => "Pairline").id
@@ -47,7 +47,7 @@ for i in 0..100
 end
 
 #creaing flights
-for i in 0..100
+for i in 0..200
   randDate = DateTime.now + rand(30)
   randArrival = randDate + 0.3
   airlineID = Airline.find_by(:name => "Jairline").id

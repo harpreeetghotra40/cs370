@@ -125,6 +125,8 @@ function pullFlightdata(data, count) {
 				$($flight).find(".to-airport").text(getAirport(data[data.length-count].airportDestination));
 				$($flight).find(".to-time").text(readTime(data[data.length-count].timeOfArrival));
 				$($flight).find(".duration").text(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
+				$($flight).find(".price").text(readTime(data[data.length-count].price));
+				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
 				$flightContainer.append($flight);
 				pullFlightdata(data, count - 1);
 			}
@@ -181,10 +183,9 @@ function redirectToSearchFlights(){
         .then(response => response.json())
         .then(response => {
 			$flights = response;
-			window.location.href = "search-result.html";
+			// window.location.href = "search-result.html";
 			$flightContainer = $(".flight_list");
 			pullFlightdata($flights, $flights.length);
-			console.log("test");
         })
     // window.location.href = "search-result.html";
 }

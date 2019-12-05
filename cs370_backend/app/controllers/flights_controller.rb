@@ -13,7 +13,7 @@ class FlightsController < ApplicationController
       flight.timeOfDeparture.month == date.month
     end
     render json: flights.as_json(
-      except: [:id, :updated_at, :created_at],
+      except: [:updated_at, :created_at],
     )
   end
 end
