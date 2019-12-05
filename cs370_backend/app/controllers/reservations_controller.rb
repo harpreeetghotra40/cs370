@@ -20,6 +20,9 @@ class ReservationsController < ApplicationController
   def delete
     begin
       Reservation.find(params[:reservation_id]).destroy
+      render json: @user.reservations.as_json(
+        except: [:id, :updated_at, :created_at],
+      )
     rescue
       render json: ({ 'error': "no such reservation found!" })
     end
