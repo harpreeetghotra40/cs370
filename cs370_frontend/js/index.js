@@ -216,6 +216,7 @@ function pullFlightResultdata(data, count) {
 				$($flight).find(".duration").text(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
 				$($flight).find(".price").text(readTime(data[data.length-count].price));
 				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
+				$($flight).find(".flightCode").text(data[data.length-count].id);
 				$flightContainer.append($flight);
 				pullFlightResultdata(data, count - 1);
 			}
@@ -223,8 +224,9 @@ function pullFlightResultdata(data, count) {
 	}
 }
 function buyTicket() {
-	$ticket = $(this).parent();
-	$flight = $($ticket).find(".ticket").text();
+	$ticket = event.target;
+	$ticket = $ticket.parentElement;
+	$flight = $($ticket).find(".flightCode").text();
 	localStorage.setItem('flightID',$flight);
 	window.location.href = "buy-ticket.html";
 }
