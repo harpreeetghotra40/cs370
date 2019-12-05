@@ -4,6 +4,7 @@ $(document).ready(function() {
 	if ($("#flight-container").length)loadFlights();	
     if ($(".flight_list").length)loadFlightListResult();
     if ($("#Departure").length)loadAirportInfoResult();
+    if ($("#Departure").length)loadUserFlightsD();
 });
 function makeReservation(event) {
     event.preventDefault();
@@ -51,6 +52,8 @@ function openCity(evt, cityName) {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+	if(cityName == "Arrival") loadUserFlightsA();
+	if(cityName == "Departure") loadUserFlightsD();
 }
 function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
@@ -88,7 +91,7 @@ function loadFlightListResult(){
     $($flight_list).html("").load("./flight-list-result.html");
 }
 function loadAirportInfoResult(){
-    $tabcontent = $(".tabcontent");
+    $tabcontent = $("#tabcontent");
     $($tabcontent).html("").load("./airport-content.html");
 }
 function loadFlights() {
@@ -99,7 +102,7 @@ function loadFlights() {
 			'Content-Type': 'application/json',
 			'Accepts': 'application/json',
 			'Authorization': `Bearer ${localStorage.jwt}`
-		}
+        }
 	})
 	.then(res => res.json())
 	.then(res => {
@@ -133,6 +136,78 @@ function pullFlightdata(data, count) {
 		});
 	}
 }
+
+
+
+function loadUserFlightsD() {
+	$departure = $("#Departure");
+	fetch(`http://localhost:3000/airports/departures`, {
+		"method": "POSt",
+		"headers": {
+			'Content-Type': 'application/json',
+			'Accepts': 'application/json',
+			'Authorization': `Bearer ${localStorage.jwt}`
+        },
+        body: JSON.stringify({
+            "source": 1
+        })
+	})
+	.then(res => res.json())
+	.then(res => {
+		$tickets = res;
+		console.log($tickets);
+		pullUserFlightdata($tickets, $tickets.length);
+	});
+}
+
+function loadUserFlightsA() {
+	$departure = $("#Arrival");
+	fetch(`http://localhost:3000/airports/arrivals`, {
+		"method": "POSt",
+		"headers": {
+			'Content-Type': 'application/json',
+			'Accepts': 'application/json',
+			'Authorization': `Bearer ${localStorage.jwt}`
+        },
+        body: JSON.stringify({
+            "destination": 1
+        })
+	})
+	.then(res => res.json())
+	.then(res => {
+		$tickets = res;
+		console.log($tickets);
+		pullUserFlightdata($tickets, $tickets.length);
+	});
+}
+function pullUserFlightdata(data, count) {
+	if(count > 0) {
+		$.ajax({
+			url: './user-flight.html',
+			type: 'GET',
+			async: 'true',
+			success: function(result) {
+				$flight = $(document.createElement("div"))
+					.attr({"class" : "flight"});
+				$flight.html(result);
+				$($flight).find(".flightCode").text(data[data.length-count].id);
+				$($flight).find(".airline").text(getAirline(data[data.length-count].airline_id));
+				$($flight).find(".from-airport").text(getAirport(data[data.length-count].airportSource));
+				$($flight).find(".from-time").text(readTime(data[data.length-count].timeOfDeparture));
+				$($flight).find(".to-airport").text(getAirport(data[data.length-count].airportDestination));
+				$($flight).find(".to-time").text(readTime(data[data.length-count].timeOfArrival));
+				$($flight).find(".duration").text(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
+				$($flight).find(".price").text(readTime(data[data.length-count].price));
+				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
+				$departure.append($flight);
+				pullUserFlightdata(data, count - 1);
+			}
+		});
+	}
+}
+
+
+
 function getAirline(airline) {
 	switch(airline){
 		case 1: return "H-Air";
@@ -163,10 +238,22 @@ function getDuration(from, to) {
 }
 function redirectToSearchFlights(){
 	$from = $("#flyCityA_oneWay").val();
-	$to = $("#flyCityB_oneWay").val();
+    $to = $("#flyCityB_oneWay").val();
     $date = new Date($("#flyingFromDate_oneWay").val());
+    $today = new Date();
+    console.log($today-$date);
+    if($from == $to){
+        alert("You can not flight to the same airport");
+        window.location.reload(); 
+        return;
+    }
+    if($date- $today < 0){
+        alert("You can not book past day")
+        window.location.reload(); 
+        return;
+    }
 	$airline = $("title").text();
-	if ($airline == "Flight Bookings") $airline = null;
+    if ($airline == "Flight Bookings") $airline = null;
 	loadSearchFlightPage($to, $from, $date, $airline);
 }
 function loadSearchFlightPage(from, to, date, airline) {

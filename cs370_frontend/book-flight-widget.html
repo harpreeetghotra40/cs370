@@ -1,10 +1,10 @@
 <!-- tab widget starts here -->
 <div class="tab">
-    <button class="tablinks" id="abc" onclick="openCity(event, 'Round_Trip')">Round Trip</button>
-    <button class="tablinks" onclick="openCity(event, 'One_Way')">One way</button>
+    <!-- <button class="tablinks" id="abc" onclick="openCity(event, 'Round_Trip')">Round Trip</button> -->
+    <button class="tablinks" onclick="openCity(event, 'One_Way')">Book Flight</button>
 </div>
 
-<div id="Round_Trip" class="tabcontent">
+<!-- <div id="Round_Trip" class="tabcontent">
     <div>
         <form class="makeReservation" onsubmit="makeReservation(event)" action="/search-result.html">
             <input class="flyCityA" id="flyCityA_round" list="source_roundTrip" name="destination"
@@ -26,13 +26,12 @@
             <br>
             <input type="date" id="flyingFromDate_round" name="flyingFromDate" onfocus="clickArrow(event)">
             <input type="date" id="flyingToDate_round" name="flyingToDate" onfocus="clickArrow(event)">
-            <!-- <input list="passenger" name="destination" placeholder="Travelers"> -->
             <input id="passenger" type="number" min="0" placeholder="Travelers">
             <br>
             <input class="submit" type="submit" onclick="redirectToSearchFlights()" value="Search">
         </form>
     </div>
-</div>
+</div> -->
 
 <div id="One_Way" class="tabcontent">
     <div>
