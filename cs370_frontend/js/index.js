@@ -2,7 +2,7 @@ $(document).ready(function() {
 	loadMenu();
 	if ($(".book-flight-widget").length) loadBookFlightWidget();
     if ($("#flight-container").length)loadFlights();	
-    if( $(".flight_list").length)loadFlightListResult();
+    if ($(".flight_list").length)loadFlightListResult();
 });
 function makeReservation(event) {
     event.preventDefault();
@@ -160,5 +160,31 @@ function getDuration(from, to) {
 	return $h + " hours " + $m + " minutes";
 }
 function redirectToSearchFlights(){
-    window.location.href = "search-result.html";
+	$from = $("#flyCityA_oneWay").val();
+	$to = $("#flyCityB_oneWay").val();
+	$date = new Date($("#flyingFromDate_oneWay").val());
+	$from = "New York, NY";
+	$to = "Los Angeles, CA";
+	$date = "2019-12-10";
+	fetch("http://localhost:3000/flights", {
+            "method": "POST",
+            "headers": {
+                'Content-Type': 'application/json',
+                'Accepts': 'application/json'
+            },
+            body: JSON.stringify({
+                "airportSource": $from,
+                "airportDestination": $to,
+                "date": $date
+            })
+        })
+        .then(response => response.json())
+        .then(response => {
+			$flights = response;
+			window.location.href = "search-result.html";
+			$flightContainer = $(".flight_list");
+			pullFlightdata($flights, $flights.length);
+			console.log("test");
+        })
+    // window.location.href = "search-result.html";
 }
