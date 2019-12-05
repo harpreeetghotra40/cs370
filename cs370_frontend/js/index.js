@@ -3,6 +3,7 @@ $(document).ready(function() {
 	if ($(".book-flight-widget").length) loadBookFlightWidget();
 	if ($("#flight-container").length)loadFlights();	
     if ($(".flight_list").length)loadFlightListResult();
+    if ($("#Departure").length)loadAirportInfoResult();
 });
 function makeReservation(event) {
     event.preventDefault();
@@ -85,6 +86,10 @@ function loadBookFlightWidget(){
 function loadFlightListResult(){
     $flight_list = $(".flight_list");
     $($flight_list).html("").load("./flight-list-result.html");
+}
+function loadAirportInfoResult(){
+    $tabcontent = $(".tabcontent");
+    $($tabcontent).html("").load("./airport-content.html");
 }
 function loadFlights(from, to, date) {
 	$flightContainer = $("#flight-container");
