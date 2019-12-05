@@ -5,7 +5,7 @@ class FlightsController < ApplicationController
     airportSource = Airport.find_by(:location => params[:airportSource])
     airportDestination = Airport.find_by(:location => params[:airportDestination])
     date = params[:date].to_datetime
-    if (params[:airline] == null)
+    if (params[:airline] == nil)
       flights = Flight.all.select do |flight|
         flight.airportSource == airportSource.id &&
         flight.airportDestination == airportDestination.id &&
