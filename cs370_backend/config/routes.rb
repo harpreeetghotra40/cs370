@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   #make new reservation
   post "/reservations/new", to: "reservations#new"
 
+  post "/reservations/delete", to: "reservations#delete"
+
   post "/airports/arrivals", to: "airports#arrivals"
   post "/airports/departures", to: "airports#departures"
 end
