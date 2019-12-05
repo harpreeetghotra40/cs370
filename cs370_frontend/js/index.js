@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	loadMenu();
 	if ($(".book-flight-widget").length) loadBookFlightWidget();
-    if ($("#flight-container").length)loadFlights();	
+    // if ($("#flight-container").length)loadFlights();	
     if ($(".flight_list").length)loadFlightListResult();
 });
 function makeReservation(event) {
@@ -169,7 +169,7 @@ function getDuration(from, to) {
 function redirectToSearchFlights(){
 	$from = $("#flyCityA_oneWay").val();
 	$to = $("#flyCityB_oneWay").val();
-	$date = new Date($("#flyingFromDate_oneWay").val());
+    $date = new Date($("#flyingFromDate_oneWay").val());
 	loadSearchFlightPage($to, $from, $date);
 }
 function loadSearchFlightPage(from, to, date) {

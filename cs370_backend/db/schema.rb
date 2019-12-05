@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_12_05_164857) do
+
   create_table "airlines", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_164857) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "airline_id", null: false
+    t.integer "flight_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "seats"
@@ -58,6 +59,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_164857) do
   end
 
   add_foreign_key "flights", "airlines"
-  add_foreign_key "reservations", "airlines"
+  add_foreign_key "reservations", "flights"
   add_foreign_key "reservations", "users"
 end

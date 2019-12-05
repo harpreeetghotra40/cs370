@@ -17,6 +17,7 @@ section#itinerary h2{
 	background-color:#ccc;
 	color:#473d27;
 	border:1px solid #8b826d;
+	margin-bottom:20px;
 }
 .airline{
 	grid-area: info;
@@ -44,7 +45,12 @@ section#itinerary h2{
 	grid-area: buy;
 	padding:5px;
 	background:#c9beae;
-	border: 5px solid black;
+	border: 5px solid #a3998b;
+}
+.buyButton:hover{
+	background:#7b6c56;
+	border: 5px solid #a3998b;
+	cursor:pointer;
 }
 .arrow img{
 	width:4rem;
