@@ -23,7 +23,7 @@
 		<div class="flightInfoWrap">
 			<div class="tab">
 				<button class="tablinks" onclick="openCity(event, 'Departure')" id="defaultOpen">Departure</button>
-				<button class="tablinks" onclick="openCity(event, 'Arrival')">Arrival</button>
+				<button class="tablinks" onclick="openCity(event, 'Arrival').then(loadUserFlightsA())">Arrival</button>
 			</div>
 
 			<div id="Departure" class="tabcontent">

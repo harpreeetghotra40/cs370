@@ -4,7 +4,7 @@ $(document).ready(function() {
 	if ($("#flight-container").length)loadFlights();	
     if ($(".flight_list").length)loadFlightListResult();
     if ($("#Departure").length)loadAirportInfoResult();
-    if ($("#Departure").length)loadUserFlights();
+    if ($("#Departure").length)loadUserFlightsD();
 });
 function makeReservation(event) {
     event.preventDefault();
@@ -52,6 +52,8 @@ function openCity(evt, cityName) {
     }
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
+	if(cityName == "Arrival") loadUserFlightsA();
+	if(cityName == "Departure") loadUserFlightsD();
 }
 function checkLogin() {
     if (localStorage.jwt === null || localStorage.jwt === undefined) {
@@ -89,7 +91,7 @@ function loadFlightListResult(){
     $($flight_list).html("").load("./flight-list-result.html");
 }
 function loadAirportInfoResult(){
-    $tabcontent = $(".tabcontent");
+    $tabcontent = $("#tabcontent");
     $($tabcontent).html("").load("./airport-content.html");
 }
 function loadFlights() {
@@ -137,7 +139,7 @@ function pullFlightdata(data, count) {
 
 
 
-function loadUserFlights() {
+function loadUserFlightsD() {
 	$departure = $("#Departure");
 	fetch(`http://localhost:3000/airports/departures`, {
 		"method": "POSt",
@@ -154,7 +156,28 @@ function loadUserFlights() {
 	.then(res => {
 		$tickets = res;
 		console.log($tickets);
-		pullFlightdata($tickets, $tickets.length);
+		pullUserFlightdata($tickets, $tickets.length);
+	});
+}
+
+function loadUserFlightsA() {
+	$departure = $("#Arrival");
+	fetch(`http://localhost:3000/airports/arrivals`, {
+		"method": "POSt",
+		"headers": {
+			'Content-Type': 'application/json',
+			'Accepts': 'application/json',
+			'Authorization': `Bearer ${localStorage.jwt}`
+        },
+        body: JSON.stringify({
+            "destination": 1
+        })
+	})
+	.then(res => res.json())
+	.then(res => {
+		$tickets = res;
+		console.log($tickets);
+		pullUserFlightdata($tickets, $tickets.length);
 	});
 }
 function pullUserFlightdata(data, count) {
@@ -177,7 +200,7 @@ function pullUserFlightdata(data, count) {
 				$($flight).find(".price").text(readTime(data[data.length-count].price));
 				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
 				$departure.append($flight);
-				pullFlightdata(data, count - 1);
+				pullUserFlightdata(data, count - 1);
 			}
 		});
 	}
