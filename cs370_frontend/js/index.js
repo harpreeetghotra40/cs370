@@ -83,8 +83,8 @@ function loadBookFlightWidget(){
 }
 function loadFlights() {
 	$flightContainer = $("#flight-container");
-	$from = "Los Angeles, CA";
-	$to = "New York, NY";
+	$from = "New York, NY";
+	$to = "Los Angeles, CA";
 	$date = "2019-12-10";
 	fetch("http://localhost:3000/flights", {
             "method": "POST",
@@ -134,11 +134,11 @@ function pullFlightdata(data, count) {
 				$flight = $(document.createElement("div"))
 					.attr({"class" : "flight"});
 				$flight.html(result);
-				$($flight).find(".code").text(data[data.length-count].airline_id);
-				$($flight).find(".from").text(data[data.length-count].airportSource);
-				$($flight).find(".from-time").text(data[data.length-count].timeOfDeparture);
-				$($flight).find(".to").text(data[data.length-count].airportDestination);
-				$($flight).find(".to-time").text(data[data.length-count].timeOfArrival);
+				$($flight).find(".airline-code").text(data[data.length-count].airline_id);
+				$($flight).find(".flying-from a").text(data[data.length-count].airportSource);
+				$($flight).find(".departA-time").text(data[data.length-count].timeOfDeparture);
+				$($flight).find(".flying-from b").text(data[data.length-count].airportDestination);
+				$($flight).find(".arrivalA-time").text(data[data.length-count].timeOfArrival);
 				$flightContainer.append($flight);
 				pullFlightdata(data, count - 1);
 			}
