@@ -1,7 +1,7 @@
 class AirportsController < ApplicationController
   skip_before_action :authorized, only: [:index]
 
-  def arrival
+  def arrivals
     flights = Flight.all.select do |flight|
       flight.airportDestination == params[:destination].to_i && flight.timeOfDeparture > DateTime.now
     end
@@ -10,7 +10,7 @@ class AirportsController < ApplicationController
     )
   end
 
-  def destination
+  def departures
     flights = Flight.all.select do |flight|
       flight.airportSource == params[:source].to_i && flight.timeOfArrival > DateTime.now
     end
