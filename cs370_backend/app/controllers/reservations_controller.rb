@@ -1,17 +1,18 @@
 class ReservationsController < ApplicationController
   def index
-    render json: @user.reservations.as_json(
+    render json: @user.flights.as_json(
       except: [:id, :updated_at, :created_at],
     )
   end
 
   def new
+
     #begin and rescue for catching errors
     begin
       flight = Flight.find(params[:flight_id])
       #check if there are enough seats
-      if flight.seats >= params[:seats]
-        flight.seats -= params[:seats]
+      if flight.seats >= params[:seats].to_i
+        flight.seats -= params[:seats].to_i
         flight.save
         reserve = Reservation.create!(:user_id => @user.id, :flight_id => flight.id, :seats => params[:seats])
         render json: reserve.as_json(

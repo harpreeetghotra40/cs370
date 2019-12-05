@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	loadMenu();
 	if ($(".book-flight-widget").length) loadBookFlightWidget();
-    // if ($("#flight-container").length)loadFlights();	
+	if ($("#flight-container").length)loadFlights();	
     if ($(".flight_list").length)loadFlightListResult();
 });
 function makeReservation(event) {
@@ -88,23 +88,37 @@ function loadFlightListResult(){
 }
 function loadFlights(from, to, date) {
 	$flightContainer = $("#flight-container");
-	fetch("http://localhost:3000/flights", {
-            "method": "POST",
-            "headers": {
-                'Content-Type': 'application/json',
-                'Accepts': 'application/json'
-            },
-            body: JSON.stringify({
-                "airportSource": from,
-                "airportDestination": to,
-                "date": date
-            })
-        })
-        .then(response => response.json())
-        .then(response => {
-			$flights = response;			
-			pullFlightdata($flights, $flights.length);
-        })
+	fetch(`http://localhost:3000/reservations`, {
+		"method": "GET",
+		"headers": {
+			'Content-Type': 'application/json',
+			'Accepts': 'application/json',
+			'Authorization': `Bearer ${localStorage.jwt}`
+		}
+	})
+	.then(res => res.json())
+	.then(res => {
+		$tickets = res;
+		console.log($tickets);
+		pullFlightdata($tickets, $tickets.length);
+	});
+	// fetch("http://localhost:3000/flights", {
+            // "method": "POST",
+            // "headers": {
+                // 'Content-Type': 'application/json',
+                // 'Accepts': 'application/json'
+            // },
+            // body: JSON.stringify({
+                // "airportSource": from,
+                // "airportDestination": to,
+                // "date": date
+            // })
+        // })
+        // .then(response => response.json())
+        // .then(response => {
+			// $flights = response;			
+			// pullFlightdata($flights, $flights.length);
+        // })
 }
 function pullFlightdata(data, count) {
 	if(count > 0) {
@@ -218,6 +232,10 @@ function pullFlightResultdata(data, count) {
 				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
 				$($flight).find(".flightCode").text(data[data.length-count].id);
 				$flightContainer.append($flight);
+				if ($("h2").text() == "Ticket") {
+					$(".buyButton").text("Confirm");
+					$(".buyButton").attr({'onclick':'confirmTicket()'});
+				}
 				pullFlightResultdata(data, count - 1);
 			}
 		});
@@ -228,11 +246,18 @@ function buyTicket() {
 	$ticket = $ticket.parentElement;
 	$flight = $($ticket).find(".flightCode").text();
 	localStorage.setItem('flightID',$flight);
+	// localStorage.setItem('airline',$($ticket).find(".airline").text());
+	// localStorage.setItem('from-airport',$($ticket).find(".from-airport").text());
+	// localStorage.setItem('from-time',$($ticket).find(".from-time").text());
+	// localStorage.setItem('to-airport',$($ticket).find(".to-airport").text());
+	// localStorage.setItem('to-time',$($ticket).find(".to-time").text());
+	// localStorage.setItem('duration',$($ticket).find(".duration").text());
+	// localStorage.setItem('price',$($ticket).find(".price").text());
+	// localStorage.setItem('seats',$($ticket).find(".seats").text());
 	window.location.href = "buy-ticket.html";
 }
 function loadTicketDetails() {
 	$flightID = localStorage.flightID;
-	console.log($flightID)
 	fetch(`http://localhost:3000/flights/getFlight`, {
 		"method": "POST",
 		"headers": {
@@ -245,5 +270,28 @@ function loadTicketDetails() {
 		})
 	})
 	.then(res => res.json())
-	.then(res => console.log(res, $flightID))
+	.then(res => {
+	$flights = res;
+	console.log($flights);
+	$flightContainer = $("#flight-result-container");
+	pullFlightResultdata($($flights), 1);})
+}
+function confirmTicket() {
+	console.log(localStorage.flightID);
+	fetch(`http://localhost:3000/reservations/new`, {
+		"method": "POST",
+		"headers": {
+			'Content-Type': 'application/json',
+			'Accepts': 'application/json',
+			'Authorization': `Bearer ${localStorage.jwt}`
+		},
+		body: JSON.stringify({
+			"flight_id": localStorage.flightID,
+			"seats": "23"
+		})
+	})
+	.then(res => res.json())
+	.then(res => {
+		window.location.href = "user-itinerary.html";
+	})
 }
