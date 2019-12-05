@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 2019_12_05_150648) do
 
   create_table "reservations", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "flight_id", null: false
+    t.integer "airline_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["flight_id"], name: "index_reservations_on_flight_id"
+    t.index ["airline_id"], name: "index_reservations_on_airline_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
@@ -57,6 +57,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_150648) do
   end
 
   add_foreign_key "flights", "airlines"
-  add_foreign_key "reservations", "flights"
+  add_foreign_key "reservations", "airlines"
   add_foreign_key "reservations", "users"
 end
