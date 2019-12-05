@@ -129,14 +129,6 @@ function pullFlightdata(data, count) {
 				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
 				$flightContainer.append($flight);
 				pullFlightdata(data, count - 1);
-				// console.log(getAirline(data[data.length-count].airline_id));
-				// console.log(getAirport(data[data.length-count].airportSource));
-				// console.log(readTime(data[data.length-count].timeOfDeparture));
-				// console.log(getAirport(data[data.length-count].airportDestination));
-				// console.log(readTime(data[data.length-count].timeOfArrival));
-				// console.log(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
-				// console.log(readTime(data[data.length-count].price));
-				// console.log(readTime(data[data.length-count].seats));
 			}
 		});
 	}
