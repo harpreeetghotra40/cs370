@@ -84,6 +84,10 @@ h1#hpj{
 	width: 2rem;
 	margin:0;
 }
+.head{
+	width:100%;
+	height:100%;
+}
 .menu{
 	width:100vw;
 	height:2rem;
