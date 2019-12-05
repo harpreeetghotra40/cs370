@@ -13,12 +13,12 @@ section#airport{
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   width: 20%;
-  height: 300px;
+  height: 500px;
 }
 
 /* Style the buttons inside the tab */
 .tab button {
-  display: block;
+  /* display: block; */
   background-color: inherit;
   color: black;
   padding: 22px 16px;
@@ -48,7 +48,8 @@ section#airport{
   border: 1px solid #ccc;
   width: 80%;
   border-left: none;
-  height: 300px;
+  height: 500px;
+  overflow:scroll;
 }
 table{
   width:100%;
@@ -62,4 +63,30 @@ tr, th, td{
 }
 th{
   font-weight: bold;
+}
+.airInfoWrap{
+  width:100%;
+  border:1px solid black;
+  float:left;
+}
+.airline{
+  text-align:center;
+  padding:20px;
+}
+.from-wrap,
+.to-wrap{
+  width:35%;
+  float:left;
+  text-align:center;
+  line-height:2;
+}
+.arrow{
+  width:30%;
+  float:left;
+  text-align:center;
+  line-height:2;
+  padding-bottom:20px;
+}
+img{
+  width:10%;
 }
