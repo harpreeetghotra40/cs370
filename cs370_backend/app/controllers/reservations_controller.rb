@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   def index
     render json: @user.flights.as_json(
-      except: [:id, :updated_at, :created_at],
+      except: [:updated_at, :created_at],
     )
   end
 

@@ -184,15 +184,18 @@ function redirectToSearchFlights(){
 	$from = $("#flyCityA_oneWay").val();
 	$to = $("#flyCityB_oneWay").val();
     $date = new Date($("#flyingFromDate_oneWay").val());
-	loadSearchFlightPage($to, $from, $date);
+	$airline = $("title").text();
+	if ($airline.equals("Flight Bookings")) $airline = null;
+	loadSearchFlightPage($to, $from, $date, $airline);
 }
-function loadSearchFlightPage(from, to, date) {
+function loadSearchFlightPage(from, to, date, airline) {
 	localStorage.setItem('from',from);
 	localStorage.setItem('to',to);
 	localStorage.setItem('date',date);
+	localStorage.setItem('airline', airline);
 	window.location.href = "search-itinerary.html";
 }
-function loadSearchFlightData(from, to, date) {
+function loadSearchFlightData(from, to, date, airline) {
 	$flightContainer = $("#flight-result-container");
 	fetch("http://localhost:3000/flights", {
 		"method": "POST",
@@ -204,6 +207,7 @@ function loadSearchFlightData(from, to, date) {
 			"airportSource": from,
 			"airportDestination": to,
 			"date": date
+			"airline": airline
 		})
 	})
 	.then(response => response.json())
