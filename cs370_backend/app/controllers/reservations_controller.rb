@@ -28,7 +28,7 @@ class ReservationsController < ApplicationController
 
   def delete
     begin
-      reservation = Reservation.find(params[:reservation_id])
+      reservation = @user.reservations.where(:flight_id => params[:flight_id])
       flight = reservation.flight
       flight.seats += reservation.seats
       reservation.destroy
