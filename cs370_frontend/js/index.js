@@ -241,6 +241,38 @@ function loadSearchFlightData(from, to, date) {
 	.then(response => response.json())
 	.then(response => {
 		$flights = response;			
-		pullFlightdata($flights, $flights.length);
+		pullFlightResultdata($flights, $flights.length);
 	})
+}
+function pullFlightResultdata(data, count) {
+	if(count > 0) {
+		$.ajax({
+			url: './result-flight.html',
+			type: 'GET',
+			async: 'true',
+			success: function(result) {
+				$flight = $(document.createElement("div"))
+					.attr({"class" : "flight"});
+				$flight.html(result);
+				$($flight).find(".airline").text(getAirline(data[data.length-count].airline_id));
+				$($flight).find(".from-airport").text(getAirport(data[data.length-count].airportSource));
+				$($flight).find(".from-time").text(readTime(data[data.length-count].timeOfDeparture));
+				$($flight).find(".to-airport").text(getAirport(data[data.length-count].airportDestination));
+				$($flight).find(".to-time").text(readTime(data[data.length-count].timeOfArrival));
+				$($flight).find(".duration").text(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
+				$($flight).find(".price").text(readTime(data[data.length-count].price));
+				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
+				$flightContainer.append($flight);
+				pullFlightResultdata(data, count - 1);
+				// console.log(getAirline(data[data.length-count].airline_id));
+				// console.log(getAirport(data[data.length-count].airportSource));
+				// console.log(readTime(data[data.length-count].timeOfDeparture));
+				// console.log(getAirport(data[data.length-count].airportDestination));
+				// console.log(readTime(data[data.length-count].timeOfArrival));
+				// console.log(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
+				// console.log(readTime(data[data.length-count].price));
+				// console.log(readTime(data[data.length-count].seats));
+			}
+		});
+	}
 }
