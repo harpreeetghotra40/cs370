@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post "/flights", to: "flights#index"
 
   #get flight
-  get "/flights/:flight_id", to: "flights#show"
+  post "/flights/getFlight", to: "flights#show"
 
   #get reservations
   get "/reservations", to: "reservations#index"
