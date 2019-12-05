@@ -1,0 +1,10 @@
+#ticket-info{
+	width:80vw;
+    height:10rem;
+	margin:0 auto;
+	padding:0;
+	text-align:center;
+	background-color:#ccc;
+	color:#473d27;
+	border:1px solid #8b826d;
+}
