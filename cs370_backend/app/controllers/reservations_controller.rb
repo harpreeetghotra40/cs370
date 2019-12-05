@@ -31,10 +31,9 @@ class ReservationsController < ApplicationController
     begin
       reservation = @user.reservations.where(:flight_id => params[:flight_id])
       flight = Flight.find(params[:flight_id])
-      # flight.seats += reservation[:seats]
-      # byebug
+      flight.seats -= 1
       reservation.destroy_all
-      # flight.save
+      flight.save
       render json: reservation.as_json(
         except: [:id, :updated_at, :created_at],
       )

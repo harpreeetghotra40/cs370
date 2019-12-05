@@ -7,18 +7,18 @@ class FlightsController < ApplicationController
     date = params[:date].to_datetime
     if (params[:airline] == "null")
       flights = Flight.all.select do |flight|
-        flight.airportSource == airportSource.id &&
-        flight.airportDestination == airportDestination.id &&
-        flight.timeOfDeparture.day == date.day &&
+        flight.airportSource == airportDestination.id &&
+        flight.airportDestination == airportSource.id &&
+        flight.timeOfDeparture.day == date.day + 1 &&
         flight.timeOfDeparture.year == date.year &&
         flight.timeOfDeparture.month == date.month
       end
     else
       flights = Flight.all.select do |flight|
         flight.airline.name == params[:airline] &&
-        flight.airportSource == airportSource.id &&
-        flight.airportDestination == airportDestination.id &&
-        flight.timeOfDeparture.day == date.day &&
+        flight.airportSource == airportDestination.id &&
+        flight.airportDestination == airportSource.id &&
+        flight.timeOfDeparture.day == date.day + 1 &&
         flight.timeOfDeparture.year == date.year &&
         flight.timeOfDeparture.month == date.month
       end
