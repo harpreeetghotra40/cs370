@@ -1,65 +1,41 @@
 section#itinerary{
-  background:#c9beae;
-  width:100%;
-  height:800px;
+  width:100vw;
 }
-.departure{
-  width:80%;
+.flight{
+  width:80vw;
+  height:10rem;
+  position:relative;
   margin:0 auto;
-  padding-top:20px;
+  justify-content: center;
+  padding:1rem;
   background:#ccc;
   border:1px solid #8b826d;
 }
-.departure h2{
-  font-size: 20px;
+.flight h2{
+  font-size: 2rem;
   text-align: center;
 }
-.departFromA,
-.departFromB{
-  height:200px;
-  position:relative;
-}
 p.airline-code{
-  width:50%;
+  width:100vw;
   text-align:center;
   margin:10px;
 }
-.flying-from-wrap,
-.flying-to-wrap{
-  width:50%;
-  float:left;
+.from-wrap, .to-wrap{
+  width:35vw;
+  height: 2rem;
+  /* float:left; */
   text-align:center;
 }
-p.flying-from,
-p#departA-time,
-p#arrivalA-time,
-p#departA-terminal,
-p#arrivalA-terminal,
-p.flying-from-cabin,
-p#departA-duration,
-p#departA-duration{
+.flight p{
   margin-top:10px;
-}
-p.flying-from,
-p#departB-time,
-p#arrivalB-time,
-p#departB-terminal,
-p#arrivalB-terminal,
-p.flying-from-cabin,
-P#departB-duration{
-  margin-top:10px;
-}
-p.flying-from-cabin,
-p#departA-duration,
-p#departB-duration{
   color:#473d27;
 }
 .arrow{
-  width:50px;
+  width:10vw;
   height:50px;
-  position:absolute;
-  left:50%;
-  top:25%;
+  /* position:relative; */
+  /* left:50%; */
+  /* top:25%; */
 }
 .arrow img{
   width:100%;
