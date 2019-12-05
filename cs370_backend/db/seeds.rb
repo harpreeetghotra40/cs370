@@ -30,7 +30,7 @@ for i in 0..200
   while airportSource.id == airportDestination.id
     airportDestination = Airport.all.sample
   end
-  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200))
+  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200), :status => 1)
 end
 
 #creaing flights
@@ -43,7 +43,7 @@ for i in 0..200
   while airportSource.id == airportDestination.id
     airportDestination = Airport.all.sample
   end
-  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200))
+  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200), :status => 1)
 end
 
 #creaing flights
@@ -56,5 +56,5 @@ for i in 0..200
   while airportSource.id == airportDestination.id
     airportDestination = Airport.all.sample
   end
-  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200))
+  Flight.find_or_create_by(:airline_id => airlineID, :timeOfDeparture => randDate, :timeOfArrival => randArrival, :airportSource => airportSource.id, :airportDestination => airportDestination.id, :price => rand(300..500), :seats => rand(100..200), :status => 1)
 end
