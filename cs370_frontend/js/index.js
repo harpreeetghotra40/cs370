@@ -91,7 +91,7 @@ function loadAirportInfoResult(){
     $tabcontent = $(".tabcontent");
     $($tabcontent).html("").load("./airport-content.html");
 }
-function loadFlights(from, to, date) {
+function loadFlights() {
 	$flightContainer = $("#flight-container");
 	fetch(`http://localhost:3000/reservations`, {
 		"method": "GET",
@@ -118,6 +118,7 @@ function pullFlightdata(data, count) {
 				$flight = $(document.createElement("div"))
 					.attr({"class" : "flight"});
 				$flight.html(result);
+				$($flight).find(".flightCode").text(data[data.length-count].id);
 				$($flight).find(".airline").text(getAirline(data[data.length-count].airline_id));
 				$($flight).find(".from-airport").text(getAirport(data[data.length-count].airportSource));
 				$($flight).find(".from-time").text(readTime(data[data.length-count].timeOfDeparture));
@@ -281,4 +282,7 @@ function confirmTicket() {
 	.then(res => {
 		window.location.href = "user-itinerary.html";
 	})
+}
+function editTicket() {
+	
 }
