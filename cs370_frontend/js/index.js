@@ -197,10 +197,10 @@ function loadSearchFlightData(from, to, date, airline) {
 	.then(response => response.json())
 	.then(response => {
 		$flights = response;			
-		pullFlightResultdata($flights, $flights.length);
+		pullFlightResultdata($flights, $flights.length, "search");
 	})
 }
-function pullFlightResultdata(data, count) {
+function pullFlightResultdata(data, count, func) {
 	if(count > 0) {
 		$.ajax({
 			url: './result-flight.html',
@@ -220,11 +220,14 @@ function pullFlightResultdata(data, count) {
 				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
 				$($flight).find(".flightCode").text(data[data.length-count].id);
 				$flightContainer.append($flight);
-				if ($("h2").text() == "Ticket") {
+				if (func == "buy") {
 					$(".buyButton").text("Confirm");
 					$(".buyButton").attr({'onclick':'confirmTicket()'});
+				} else if(func == "edit") {
+					$(".buyButton").text("Cancel");
+					$(".buyButton").attr({'onclick':'cancelTicket()'});
 				}
-				pullFlightResultdata(data, count - 1);
+				pullFlightResultdata(data, count - 1, func);
 			}
 		});
 	}
@@ -236,7 +239,7 @@ function buyTicket() {
 	localStorage.setItem('flightID',$flight);
 	window.location.href = "buy-ticket.html";
 }
-function loadTicketDetails() {
+function loadTicketDetails(func) {
 	$flightID = localStorage.flightID;
 	fetch(`http://localhost:3000/flights/getFlight`, {
 		"method": "POST",
@@ -254,7 +257,7 @@ function loadTicketDetails() {
 	$flights = res;
 	console.log($flights);
 	$flightContainer = $("#flight-result-container");
-	pullFlightResultdata($($flights), 1);})
+	pullFlightResultdata($($flights), 1, func);})
 }
 function confirmTicket() {
 	console.log(localStorage.flightID);
@@ -267,7 +270,7 @@ function confirmTicket() {
 		},
 		body: JSON.stringify({
 			"flight_id": localStorage.flightID,
-			"seats": "23"
+			"seats": "1"
 		})
 	})
 	.then(res => res.json())
@@ -276,5 +279,28 @@ function confirmTicket() {
 	})
 }
 function editTicket() {
-	
+	$ticket = event.target;
+	$ticket = $ticket.parentElement;
+	$flight = $($ticket).find(".flightCode").text();
+	localStorage.setItem('flightID',$flight);
+	window.location.href = "edit-ticket.html";
+}
+function cancelTicket() {
+	console.log(localStorage.flightID);
+	fetch(`http://localhost:3000/reservations/delete`, {
+		"method": "POST",
+		"headers": {
+			'Content-Type': 'application/json',
+			'Accepts': 'application/json',
+			'Authorization': `Bearer ${localStorage.jwt}`
+		},
+		body: JSON.stringify({
+			"flight_id": localStorage.flightID,
+			"seats": "1"
+		})
+	})
+	.then(res => res.json())
+	.then(res => {
+		window.location.href = "user-itinerary.html";
+	})
 }
