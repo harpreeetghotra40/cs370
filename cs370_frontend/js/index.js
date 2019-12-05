@@ -106,39 +106,19 @@ function loadFlights() {
 }
 function pullFlightdata(data, count) {
 	if(count > 0) {
-	// $from = "Los Angeles, CA";
-	// $to = "New York, NY";
-	// $date = "2019-12-10";
-    // fetch("http://localhost:3000/flights", {
-            // "method": "POST",
-            // "headers": {
-                // 'Content-Type': 'application/json',
-                // 'Accepts': 'application/json'
-            // },
-            // body: JSON.stringify({
-                // "airportSource": $from,
-                // "airportDestination": $to,
-                // "date": $date
-            // })
-        // })
-        // .then(response => response.json())
-        // .then(response => {
-            // displayResults(response);
-        // })
 		$.ajax({
 			url: './user-flight.html',
 			type: 'GET',
 			async: 'true',
 			success: function(result) {
-				console.log(count + "testing");
 				$flight = $(document.createElement("div"))
 					.attr({"class" : "flight"});
 				$flight.html(result);
-				$($flight).find(".airline-code").text(data[data.length-count].airline_id);
-				$($flight).find(".flying-from a").text(data[data.length-count].airportSource);
-				$($flight).find(".departA-time").text(data[data.length-count].timeOfDeparture);
-				$($flight).find(".flying-from b").text(data[data.length-count].airportDestination);
-				$($flight).find(".arrivalA-time").text(data[data.length-count].timeOfArrival);
+				$($flight).find(".code").text(data[data.length-count].airline_id);
+				$($flight).find(".from-airport").text(data[data.length-count].airportSource);
+				$($flight).find(".from-time").text(data[data.length-count].timeOfDeparture);
+				$($flight).find(".to-airport").text(data[data.length-count].airportDestination);
+				$($flight).find(".to-time").text(data[data.length-count].timeOfArrival);
 				$flightContainer.append($flight);
 				pullFlightdata(data, count - 1);
 			}
