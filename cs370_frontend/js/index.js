@@ -171,58 +171,12 @@ function redirectToSearchFlights(){
 	$to = $("#flyCityB_oneWay").val();
 	$date = new Date($("#flyingFromDate_oneWay").val());
 	loadSearchFlightPage($to, $from, $date);
-	// $from = "New York, NY";
-	// $to = "Los Angeles, CA";
-	// $date = "2019-12-10";
-	// $.ajax({
-		// url: './user-itinerary.html',
-		// type: 'GET',
-		// async: 'false',
-		// success: function(result) {
-			// $page = $("html").html(result);
-		// }
-	// })
-	// .then(
-	// fetch("http://localhost:3000/flights", {
-            // "method": "POST",
-            // "headers": {
-                // 'Content-Type': 'application/json',
-                // 'Accepts': 'application/json'
-            // },
-            // body: JSON.stringify({
-                // "airportSource": $from,
-                // "airportDestination": $to,
-                // "date": $date
-            // })
-        // })
-        // .then(response => response.json())
-        // .then(response => {
-			// // window.location.href = "search-result.html";
-			// $flights = response;
-			// $flightContainer = $(".flight_list");
-			// pullFlightdata($flights, $flights.length);
-        // })
-	// );
-    // window.location.href = "search-result.html";
 }
 function loadSearchFlightPage(from, to, date) {
-	// $.ajax({
-		// url: './search-itinerary.html',
-		// type: 'GET',
-		// async: 'false',
-		// success: function(result) {
-			// $page = $("html").html(result);
-		// }
-	// });
 	localStorage.setItem('from',from);
 	localStorage.setItem('to',to);
 	localStorage.setItem('date',date);
-	// $page = $("document").load("./search-itinerary.html");
 	window.location.href = "search-itinerary.html";
-	// console.log(from);
-	// console.log(to);
-	// console.log(date);
-	// loadSearchFlightData(from, to, date);
 }
 function loadSearchFlightData(from, to, date) {
 	$flightContainer = $("#flight-result-container");
@@ -241,6 +195,52 @@ function loadSearchFlightData(from, to, date) {
 	.then(response => response.json())
 	.then(response => {
 		$flights = response;			
-		pullFlightdata($flights, $flights.length);
+		pullFlightResultdata($flights, $flights.length);
+	})
+}
+function pullFlightResultdata(data, count) {
+	if(count > 0) {
+		$.ajax({
+			url: './result-flight.html',
+			type: 'GET',
+			async: 'true',
+			success: function(result) {
+				$flight = $(document.createElement("div"))
+					.attr({"class" : "flight"});
+				$flight.html(result);
+				$($flight).find(".airline").text(getAirline(data[data.length-count].airline_id));
+				$($flight).find(".from-airport").text(getAirport(data[data.length-count].airportSource));
+				$($flight).find(".from-time").text(readTime(data[data.length-count].timeOfDeparture));
+				$($flight).find(".to-airport").text(getAirport(data[data.length-count].airportDestination));
+				$($flight).find(".to-time").text(readTime(data[data.length-count].timeOfArrival));
+				$($flight).find(".duration").text(getDuration(data[data.length-count].timeOfDeparture,data[data.length-count].timeOfArrival));
+				$($flight).find(".price").text(readTime(data[data.length-count].price));
+				$($flight).find(".seats").text(readTime(data[data.length-count].seats));
+				$flightContainer.append($flight);
+				pullFlightResultdata(data, count - 1);
+			}
+		});
+	}
+}
+function buyTicket() {
+	$ticket = $(this).parent();
+	$flight = $($ticket).find(".ticket").text();
+	localStorage.setItem('flight-id',$flight);
+	window.location.href = "buy-ticket.html";
+}
+function loadTicketDetails() {
+	$flightID = localStorage.flight-id;
+	$tickets;
+	fetch("http://localhost:3000/flights", {
+		"method": "POST",
+		"headers": {
+			'Content-Type': 'application/json',
+			'Accepts': 'application/json',
+			'Authorization': 'Bearer ${localStorage.jwt}'
+		},
+		body: JSON.stringify({
+			"flight_id": $flightID,
+			"seats": $tickets
+		})
 	})
 }
