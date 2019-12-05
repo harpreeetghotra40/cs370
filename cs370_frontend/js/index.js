@@ -1,7 +1,8 @@
 $(document).ready(function() {
 	loadMenu();
 	if ($(".book-flight-widget").length) loadBookFlightWidget();
-	if ($("#flight-container").length)loadFlights();	
+    if ($("#flight-container").length)loadFlights();	
+    if( $(".flight_list").length)loadFlightListResult();
 });
 function makeReservation(event) {
     event.preventDefault();
@@ -81,6 +82,10 @@ function loadBookFlightWidget(){
     $widget = $(".book-flight-widget");
     $($widget).html("").load("./book-flight-widget.html");
 }
+function loadFlightListResult(){
+    $flight_list = $(".flight_list");
+    $($flight_list).html("").load("./flight-list-result.html");
+}
 function loadFlights() {
 	$flightContainer = $("#flight-container");
 	$from = "New York, NY";
@@ -153,4 +158,7 @@ function getDuration(from, to) {
 	$m = $minutes%60;
 	$h = Math.floor($minutes/60);
 	return $h + " hours " + $m + " minutes";
+}
+function redirectToSearchFlights(){
+    window.location.href = "search-result.html";
 }
