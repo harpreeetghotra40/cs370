@@ -41,6 +41,12 @@ section#itinerary h2{
 	grid-area: middle;
 	text-align:center;
 }
+.userEditBtn{
+	grid-area: buy;
+	padding:5px;
+	background:#c9beae;
+	border: 5px solid #a3998b;
+}
 .buyButton{
 	grid-area: buy;
 	padding:5px;
