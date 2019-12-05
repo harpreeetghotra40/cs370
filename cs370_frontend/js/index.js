@@ -304,7 +304,6 @@ function cancelTicket() {
 		},
 		body: JSON.stringify({
 			"flight_id": localStorage.flightID,
-			"seats": "1"
 		})
 	})
 	.then(res => res.json())
