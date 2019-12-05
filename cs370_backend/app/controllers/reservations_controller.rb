@@ -27,13 +27,15 @@ class ReservationsController < ApplicationController
   end
 
   def delete
+    # byebug
     begin
       reservation = @user.reservations.where(:flight_id => params[:flight_id])
-      flight = reservation.flight
-      flight.seats += reservation.seats
-      reservation.destroy
-      flight.save
-      render json: @user.reservations.as_json(
+      flight = Flight.find(params[:flight_id])
+      # flight.seats += reservation[:seats]
+      # byebug
+      reservation.destroy_all
+      # flight.save
+      render json: reservation.as_json(
         except: [:id, :updated_at, :created_at],
       )
     rescue
