@@ -16,4 +16,15 @@ class FlightsController < ApplicationController
       except: [:updated_at, :created_at],
     )
   end
+
+  def show
+    begin
+      flight = Flight.find(params[:flight_id])
+      render json: flight.as_json(
+        except: [:updated_at, :created_at],
+      )
+    rescue
+      render json: ({ 'errors': "Flight not found" })
+    end
+  end
 end

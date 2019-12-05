@@ -225,22 +225,23 @@ function pullFlightResultdata(data, count) {
 function buyTicket() {
 	$ticket = $(this).parent();
 	$flight = $($ticket).find(".ticket").text();
-	localStorage.setItem('flight-id',$flight);
+	localStorage.setItem('flightID',$flight);
 	window.location.href = "buy-ticket.html";
 }
 function loadTicketDetails() {
-	$flightID = localStorage.flight-id;
-	$tickets;
-	fetch("http://localhost:3000/flights", {
+	$flightID = localStorage.flightID;
+	console.log($flightID)
+	fetch(`http://localhost:3000/flights/getFlight`, {
 		"method": "POST",
 		"headers": {
 			'Content-Type': 'application/json',
 			'Accepts': 'application/json',
-			'Authorization': 'Bearer ${localStorage.jwt}'
+			'Authorization': `Bearer ${localStorage.jwt}`
 		},
 		body: JSON.stringify({
-			"flight_id": $flightID,
-			"seats": $tickets
+			"flight_id": $flightID
 		})
 	})
+	.then(res => res.json())
+	.then(res => console.log(res, $flightID))
 }
