@@ -230,17 +230,14 @@ function buyTicket() {
 }
 function loadTicketDetails() {
 	$flightID = localStorage.flight-id;
-	$tickets;
-	fetch("http://localhost:3000/flights", {
-		"method": "POST",
+	fetch(`http://localhost:3000/flights/${$flightID}`, {
+		"method": "GET",
 		"headers": {
 			'Content-Type': 'application/json',
-			'Accepts': 'application/json',
-			'Authorization': 'Bearer ${localStorage.jwt}'
-		},
-		body: JSON.stringify({
-			"flight_id": $flightID,
-			"seats": $tickets
-		})
+			'Accepts': 'application/json'
+			// 'Authorization': 'Bearer ${localStorage.jwt}'
+		}
 	})
+	.then(res => res.json())
+	.then(res => console.log(res))
 }
