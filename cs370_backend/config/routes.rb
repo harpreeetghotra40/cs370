@@ -18,4 +18,7 @@ Rails.application.routes.draw do
   get "/reservations", to: "reservations#index"
   #make new reservation
   post "/reservations/new", to: "reservations#new"
+
+  post "/airports/arrivals", to: "airports#arrivals"
+  post "/airports/departures", to: "airports#departures"
 end
