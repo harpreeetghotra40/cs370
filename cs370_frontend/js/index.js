@@ -183,7 +183,7 @@ function loadUserFlightsA() {
 function pullUserFlightdata(data, count) {
 	if(count > 0) {
 		$.ajax({
-			url: './user-flight.html',
+			url: './airport-content.html',
 			type: 'GET',
 			async: 'true',
 			success: function(result) {
@@ -220,7 +220,7 @@ function getAirport(airport) {
 	switch(airport){
 		case 1: return "JFK";
 		case 2: return "LAX";
-		case 3: return "Airport";
+		case 3: return "LAS";
 		default: return "Airport";
 	}
 }
